@@ -2,4 +2,8 @@
     <string name="app_name">Notepad de l\'entrainement</string>
 
     <string name="action_settings">Settings</string>
+    <string name="modele">Modèle d\'entrainement</string>
+    <string name="planifier">Planier une semaine d\'entrainement</string>
+    <string name="visualier">Voir la semaine d\'entrainement </string>
+    <string name="objectif">Objectifs d\'entrainement</string>
 </resources>
