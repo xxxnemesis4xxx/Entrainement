@@ -6,4 +6,7 @@
     <string name="planifier">Planier une semaine d\'entrainement</string>
     <string name="visualier">Voir la semaine d\'entrainement </string>
     <string name="objectif">Objectifs d\'entrainement</string>
+    <string name="title_activity_modele">Modele</string>
+
+    <string name="hello_world">Hello world!</string>
 </resources>
