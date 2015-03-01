@@ -20,6 +20,10 @@
             android:name=".Modele"
             android:label="@string/title_activity_modele" >
         </activity>
+        <activity
+            android:name=".Planifier"
+            android:label="@string/title_activity_planifier" >
+        </activity>
     </application>
 
 </manifest>
