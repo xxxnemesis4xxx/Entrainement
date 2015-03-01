@@ -1,6 +1,16 @@
 <resources>
-    <string name="app_name">Entrainement</string>
+    <string name="app_name">Notepad de l\'entrainement</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="modele">Modèle d\'entrainement</string>
+    <string name="planifier">Planier une semaine d\'entrainement</string>
+    <string name="visualier">Voir la semaine d\'entrainement </string>
+    <string name="objectif">Objectifs d\'entrainement</string>
+    <string name="title_activity_modele">Modele</string>
 
     <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="title_activity_planifier">Planifier Semaine</string>
+    <string name="title_activity_view">Semaine d\'Entrainement</string>
+    <string name="title_activity_goals">Objectif d\'Entrainement</string>
+    <string name="title_activity_view_week">Semaine d\'Entrainement</string>
 </resources>
