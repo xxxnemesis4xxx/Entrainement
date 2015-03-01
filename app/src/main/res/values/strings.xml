@@ -10,4 +10,5 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_planifier">Planifier Semaine</string>
+    <string name="title_activity_view">Semaine d\'Entrainement</string>
 </resources>

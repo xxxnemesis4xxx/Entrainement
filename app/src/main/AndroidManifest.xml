@@ -24,6 +24,10 @@
             android:name=".Planifier"
             android:label="@string/title_activity_planifier" >
         </activity>
+        <activity
+            android:name=".View"
+            android:label="@string/title_activity_view" >
+        </activity>
     </application>
 
 </manifest>
