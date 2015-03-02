@@ -2,8 +2,6 @@
 
     <!-- Base application theme. -->
     <style name="customstyle" parent="android:Widget.Button">
-        <item name="android:borderlessButtonStyle"/>
-        <item name="android:buttonStyleSmall"/>
     </style>
 
 </resources>
