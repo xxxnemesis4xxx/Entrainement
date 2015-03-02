@@ -18,7 +18,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/txtnommodele"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true" />
@@ -30,13 +30,13 @@
         android:text="Exercices :"
         android:id="@+id/textView2"
         android:layout_marginTop="34dp"
-        android:layout_below="@+id/editText"
+        android:layout_below="@+id/txtnommodele"
         android:layout_alignParentStart="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/button5"
+        android:id="@+id/btnajouterexercice"
         android:background="@drawable/custombutton"
         style="?android:attr/borderlessButtonStyle"
         android:layout_alignTop="@+id/textView2"
@@ -47,7 +47,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Enregistrer"
-        android:id="@+id/button6"
+        android:id="@+id/btnenregistrer"
         android:layout_marginBottom="20dp"
         android:layout_alignParentBottom="true"
         android:layout_alignEnd="@+id/textView" />
@@ -56,9 +56,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Annuler"
-        android:id="@+id/button7"
-        android:layout_alignTop="@+id/button6"
-        android:layout_toEndOf="@+id/button6"
+        android:id="@+id/btnannuler"
+        android:layout_alignTop="@+id/btnenregistrer"
+        android:layout_toEndOf="@+id/btnenregistrer"
         android:layout_marginStart="31dp" />
 
 </RelativeLayout>
