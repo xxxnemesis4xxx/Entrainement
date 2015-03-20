@@ -13,10 +13,7 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
 import lauzon.levis.mag.database.EntrainementDatasource;
-import lauzon.levis.mag.database.exercice;
 import lauzon.levis.mag.entrainement.MainActivity;
 import lauzon.levis.mag.entrainement.R;
 
