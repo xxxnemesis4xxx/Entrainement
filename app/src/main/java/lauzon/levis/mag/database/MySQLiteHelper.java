@@ -27,7 +27,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_EXERCICE = "create table "
             + TABLE_EXERCICE + "(" + COLUMN_ID
             + " integer primary key autoincrement, " + COLUMN_NOM
-            + " text not null, " + COLUMN_REF_MODEL + " integer, FOREIGN KEY ("
+            + " text not null, " + COLUMN_REF_MODEL + " integer NOT NULL, FOREIGN KEY ("
             + COLUMN_REF_MODEL +") REFERENCES " + TABLE_MODEL + " ("+ COLUMN_ID +"));";
 
     public MySQLiteHelper(Context context) {

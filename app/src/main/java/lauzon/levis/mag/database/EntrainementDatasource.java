@@ -42,9 +42,10 @@ public class EntrainementDatasource {
         cursor.close();
     }
 
-    public void createExercice(String nom) {
+    public void createExercice(String nom,long id) {
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_NOM, nom);
+        values.put(MySQLiteHelper.COLUMN_REF_MODEL,id);
         long insertId = database.insert(MySQLiteHelper.TABLE_EXERCICE, null,
                 values);
         Cursor cursor = database.query(MySQLiteHelper.TABLE_EXERCICE,
