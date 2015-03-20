@@ -1,6 +1,7 @@
 package lauzon.levis.mag.entrainement;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
@@ -77,5 +78,10 @@ public class Modele extends Activity {
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.relativeLayout2);
         layout.addView(tv);
         layout.addView(et);
+    }
+
+    public void changeDisplayToActivity(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

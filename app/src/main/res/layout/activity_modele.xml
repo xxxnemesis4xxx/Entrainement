@@ -126,7 +126,8 @@
             android:id="@+id/btnenregistrer"
             android:layout_centerVertical="true"
             android:layout_alignParentStart="true"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:nestedScrollingEnabled="false" />
 
         <Button
             android:layout_width="match_parent"
@@ -135,7 +136,9 @@
             android:id="@+id/btnannuler"
             android:layout_below="@+id/btnenregistrer"
             android:layout_alignParentStart="true"
-            android:layout_weight="1" />
+            android:layout_weight="1"
+            android:nestedScrollingEnabled="false"
+            android:onClick="changeDisplayToActivity" />
 
     </LinearLayout>
 
