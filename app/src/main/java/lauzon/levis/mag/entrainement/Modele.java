@@ -48,7 +48,7 @@ public class Modele extends Activity {
         TextView tv = new TextView(this);
         tv.setText("Nom de l'exercice " + String.valueOf(mActiviteCounter) + " :");
         tv.setId(mActiviteCounter);
-        
+
         if( mActiviteCounter != 1 ){
             params.addRule(RelativeLayout.BELOW, tv.getId() - 1 );
         }
