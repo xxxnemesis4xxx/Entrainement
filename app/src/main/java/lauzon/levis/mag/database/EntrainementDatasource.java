@@ -82,6 +82,25 @@ public class EntrainementDatasource {
         return Exercices;
     }
 
+    public List<model> getAllModels() {
+        List<model> Models = new ArrayList<model>();
+
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_MODEL,
+                allColumns, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            model Model = cursorToModel(cursor);
+            Models.add(Model);
+            cursor.moveToNext();
+        }
+
+        // make sure to close the cursor
+        cursor.close();
+
+        return Models;
+    }
+
     private exercice cursorToExercice(Cursor cursor) {
         exercice Exercice = new exercice();
         Exercice.setId(cursor.getLong(0));
