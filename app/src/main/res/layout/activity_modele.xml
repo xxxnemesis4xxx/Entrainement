@@ -93,7 +93,8 @@
                 android:id="@+id/textView5"
                 android:layout_below="@+id/btnajouterexercice"
                 android:layout_alignParentStart="true"
-                android:layout_marginTop="600px" />
+                android:layout_marginTop="600px"
+                android:visibility="invisible" />
 
         </RelativeLayout>
     </ScrollView>
