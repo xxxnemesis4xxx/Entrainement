@@ -8,6 +8,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 import lauzon.levis.mag.Models.CreateModel;
+import lauzon.levis.mag.Models.ModelPanel;
 
 
 public class MainActivity extends Activity {
@@ -42,7 +43,7 @@ public class MainActivity extends Activity {
     }
 
     public void changeDisplayToModele(View view) {
-        Intent intent = new Intent(this, CreateModel.class);
+        Intent intent = new Intent(this, ModelPanel.class);
         startActivity(intent);
     }
 
