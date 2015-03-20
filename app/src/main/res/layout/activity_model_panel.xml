@@ -28,8 +28,8 @@
             android:layout_height="wrap_content"
             android:text="Voir vos Models"
             android:id="@+id/button6"
-            android:layout_gravity="center_horizontal"
-            android:layout_weight="0.33" />
+            android:layout_weight="0.33"
+            android:onClick="changeDisplayToViewModels" />
 
         <Button
             android:layout_width="match_parent"

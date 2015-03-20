@@ -46,4 +46,9 @@ public class ModelPanel extends Activity {
         Intent intent = new Intent(this, CreateModel.class);
         startActivity(intent);
     }
+
+    public void changeDisplayToViewModels(View view) {
+        Intent intent = new Intent(this, ViewModels.class);
+        startActivity(intent);
+    }
 }
