@@ -1,7 +1,7 @@
 package lauzon.levis.mag.Models;
 
 import android.app.Activity;
-import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,7 +10,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import java.util.List;
 
@@ -63,12 +62,12 @@ public class ViewModels extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void LoadModelsLayout(model value) {
+    public void LoadModelsLayout(final model value) {
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
         RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.relativeLayout);
 
-        TextView tv = new TextView(this);
+        final TextView tv = new TextView(this);
         tv.setText(value.getNom());
         tv.setLayoutParams(params);
         tv.setTextSize(20);
@@ -91,9 +90,9 @@ public class ViewModels extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Context context = getApplicationContext();
-                Toast toast = Toast.makeText(context,"OUI!",Toast.LENGTH_SHORT);
-                toast.show();
+                Intent intent = new Intent(getBaseContext(), ViewExercice.class);
+                intent.putExtra("ID",value.getId());
+                startActivity(intent);
             }
         });
 
