@@ -41,7 +41,7 @@ public class ModelPanel extends Activity {
     }
 
     public void changeDisplayToCreateModel(View view) {
-        Intent intent = new Intent(this, ModelPanel.class);
+        Intent intent = new Intent(this, CreateModel.class);
         startActivity(intent);
     }
 }
