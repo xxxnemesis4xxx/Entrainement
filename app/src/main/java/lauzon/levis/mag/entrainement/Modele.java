@@ -2,6 +2,7 @@ package lauzon.levis.mag.entrainement;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -9,16 +10,19 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.ScrollView;
 import android.widget.TextView;
 
 
 public class Modele extends Activity {
 
+    private int mActiviteCounter = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modele);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
     }
 
 
@@ -45,34 +49,19 @@ public class Modele extends Activity {
     }
 
     public void newExercice(View view) {
-        LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        View v = inflater.inflate(R.layout.activity_modele, null);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(
-                LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT);
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
+        TextView tv = new TextView(this);
+        tv.setText("Nom de l'exercice " + String.valueOf(mActiviteCounter) + " :");
 
-        //Find the Number of Exercise
-        EditText dtNumber = (EditText)findViewById(R.id.nbreExer);
-        int nbreExerc = Integer.parseInt(dtNumber.getText().toString());
-
-        // Find the ScrollView
-        ScrollView sv = (ScrollView) v.findViewById(R.id.scrollView);
-
-        // Create a LinearLayout element
-        LinearLayout ll = new LinearLayout(this);
-        ll.setOrientation(LinearLayout.VERTICAL);
-
-        // Add text
-        for (int i = 1; i <= nbreExerc; i++) {
-            TextView tv = new TextView(this);
-            tv.setText("Nom de l'exercice " + String.valueOf(i) + " :");
-            tv.setLayoutParams(params);
-            tv.setTextSize(20);
-            ll.addView(tv);
+        if( mActiviteCounter != 1 ){
+            params.addRule(RelativeLayout.RIGHT_OF, 1 );
         }
-        // Add the LinearLayout element to the ScrollView
-        sv.addView(ll);
 
-        // Display the view
-        setContentView(v);
+        tv.setLayoutParams(params);
+        tv.setTextSize(20);
+
+        ++mActiviteCounter;
+        RelativeLayout layout = (RelativeLayout)findViewById(R.id.infos);
+        layout.addView(tv);
     }
 }
