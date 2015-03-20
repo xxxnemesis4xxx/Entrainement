@@ -29,6 +29,19 @@ public class EntrainementDatasource {
         dbHelper.close();
     }
 
+    public void createModel(String nom) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_NOM_MODEL, nom);
+        long insertId = database.insert(MySQLiteHelper.TABLE_MODEL, null,
+                values);
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_MODEL,
+                allColumns, MySQLiteHelper.COLUMN_ID_MODEL + " = " + insertId, null,
+                null, null, null);
+        cursor.moveToFirst();
+        model newModel = cursorToModel(cursor);
+        cursor.close();
+    }
+
     public void createExercice(String nom) {
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_NOM, nom);
@@ -71,5 +84,12 @@ public class EntrainementDatasource {
         Exercice.setId(cursor.getLong(0));
         Exercice.setNom(cursor.getString(1));
         return Exercice;
+    }
+
+    private model cursorToModel(Cursor cursor) {
+        model Model = new model();
+        Model.setId(cursor.getLong(0));
+        Model.setNom(cursor.getString(1));
+        return Model;
     }
 }
