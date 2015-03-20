@@ -21,7 +21,7 @@ import lauzon.levis.mag.entrainement.MainActivity;
 import lauzon.levis.mag.entrainement.R;
 
 
-public class Modele extends Activity {
+public class CreateModel extends Activity {
     private EntrainementDatasource datasource;
 
     private int mActiviteCounter = 1;

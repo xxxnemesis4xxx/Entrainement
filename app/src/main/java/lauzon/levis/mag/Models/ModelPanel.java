@@ -1,28 +1,25 @@
-package lauzon.levis.mag.entrainement;
+package lauzon.levis.mag.Models;
 
 import android.app.Activity;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
 
-import lauzon.levis.mag.Models.CreateModel;
+import lauzon.levis.mag.entrainement.R;
 
-
-public class MainActivity extends Activity {
+public class ModelPanel extends Activity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_model_panel);
     }
 
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
+        getMenuInflater().inflate(R.menu.menu_model_panel, menu);
         return true;
     }
 
@@ -39,25 +36,5 @@ public class MainActivity extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
-    }
-
-    public void changeDisplayToModele(View view) {
-        Intent intent = new Intent(this, CreateModel.class);
-        startActivity(intent);
-    }
-
-    public void changeDisplayToPlanifier(View view) {
-        Intent intent = new Intent(this, Planifier.class);
-        startActivity(intent);
-    }
-
-    public void changeDisplayToView(View view) {
-        Intent intent = new Intent(this,ViewWeek.class);
-        startActivity(intent);
-    }
-
-    public void changeDisplayToGoals(View view) {
-        Intent intent = new Intent(this,Goals.class);
-        startActivity(intent);
     }
 }
