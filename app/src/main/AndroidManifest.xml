@@ -40,6 +40,10 @@
             android:name="lauzon.levis.mag.Models.ViewModels"
             android:label="@string/title_activity_view_models" >
         </activity>
+        <activity
+            android:name="lauzon.levis.mag.Models.ViewExercice"
+            android:label="@string/title_activity_view_exercice" >
+        </activity>
     </application>
 
 </manifest>

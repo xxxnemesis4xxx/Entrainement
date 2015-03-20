@@ -16,4 +16,5 @@
     <string name="btnenregistrer">Enregistrer</string>
     <string name="title_activity_model_panel">Options</string>
     <string name="title_activity_view_models">Vos Models</string>
+    <string name="title_activity_view_exercice">Les Exercices</string>
 </resources>
