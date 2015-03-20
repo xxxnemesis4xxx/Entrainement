@@ -29,7 +29,7 @@ public class EntrainementDatasource {
         dbHelper.close();
     }
 
-    public void createModel(String nom) {
+    public long createModel(String nom) {
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_NOM_MODEL, nom);
         long insertId = database.insert(MySQLiteHelper.TABLE_MODEL, null,
@@ -40,6 +40,8 @@ public class EntrainementDatasource {
         cursor.moveToFirst();
         model newModel = cursorToModel(cursor);
         cursor.close();
+
+        return newModel.getId();
     }
 
     public void createExercice(String nom,long id) {
