@@ -20,7 +20,8 @@
             android:text="Créer un nouveau Model"
             android:id="@+id/button5"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="0.33" />
+            android:layout_weight="0.33"
+            android:onClick="changeDisplayToCreateModel" />
 
         <Button
             android:layout_width="match_parent"

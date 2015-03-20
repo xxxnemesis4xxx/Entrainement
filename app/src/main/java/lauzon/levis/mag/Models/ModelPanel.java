@@ -1,9 +1,11 @@
 package lauzon.levis.mag.Models;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import lauzon.levis.mag.entrainement.R;
 
@@ -36,5 +38,10 @@ public class ModelPanel extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void changeDisplayToCreateModel(View view) {
+        Intent intent = new Intent(this, ModelPanel.class);
+        startActivity(intent);
     }
 }
