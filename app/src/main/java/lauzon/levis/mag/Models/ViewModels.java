@@ -6,15 +6,20 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import lauzon.levis.mag.database.EntrainementDatasource;
 import lauzon.levis.mag.entrainement.R;
 
 public class ViewModels extends Activity {
+    private EntrainementDatasource datasource;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_models);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+
+        datasource = new EntrainementDatasource(this);
+        datasource.open();
     }
 
 
