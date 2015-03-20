@@ -1,6 +1,7 @@
 package lauzon.levis.mag.entrainement;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -10,6 +11,7 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class Modele extends Activity {
@@ -83,5 +85,25 @@ public class Modele extends Activity {
     public void changeDisplayToActivity(View view) {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
+    }
+
+    public void saveModeleInDB(View view) {
+        Context context = getApplicationContext();
+        String display = "";
+
+        EditText et = (EditText)findViewById(R.id.txtnommodele);
+        display += et.getText().toString() + "\n";
+
+        int idText = 2;
+        for(int i = 1; i < mExerciceCounter; i++) {
+
+            et = (EditText)findViewById(idText);
+            display += et.getText().toString() + "\n";
+            idText += 2;
+        }
+
+        Toast toast = Toast.makeText(context,display,Toast.LENGTH_SHORT);
+
+        toast.show();
     }
 }
