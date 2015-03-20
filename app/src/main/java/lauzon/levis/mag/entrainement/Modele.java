@@ -14,6 +14,7 @@ import android.widget.TextView;
 public class Modele extends Activity {
 
     private int mActiviteCounter = 1;
+    private int mExerciceCounter = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -46,22 +47,35 @@ public class Modele extends Activity {
 
     public void newExercice(View view) {
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
+        RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
+
+        //Adding Text View to the View
         TextView tv = new TextView(this);
-        tv.setText("Nom de l'exercice " + String.valueOf(mActiviteCounter) + " :");
+        tv.setText("Nom de l'exercice " + String.valueOf(mExerciceCounter) + " :");
         tv.setId(mActiviteCounter);
         tv.setLayoutParams(params);
         tv.setTextSize(20);
-
-
-
         if( mActiviteCounter != 1 ){
             params.addRule(RelativeLayout.BELOW, tv.getId() - 1 );
         } else {
             params.addRule(RelativeLayout.BELOW, findViewById(R.id.textView2).getId());
         }
+        ++mActiviteCounter;
+        ++mExerciceCounter;
+
+        //Adding Edit Text to the View
+        EditText et = new EditText(this);
+        et.setId(mActiviteCounter);
+        et.setLayoutParams(params2);
+
+        params2.addRule(RelativeLayout.BELOW, tv.getId());
+        params2.addRule(RelativeLayout.ALIGN_PARENT_START);
+        params2.addRule(RelativeLayout.ALIGN_PARENT_END);
 
         ++mActiviteCounter;
+
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.relativeLayout2);
         layout.addView(tv);
+        layout.addView(et);
     }
 }
