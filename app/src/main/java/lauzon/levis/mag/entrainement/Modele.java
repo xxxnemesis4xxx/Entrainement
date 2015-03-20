@@ -1,17 +1,12 @@
 package lauzon.levis.mag.entrainement;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
-import android.widget.ScrollView;
 import android.widget.TextView;
 
 
@@ -52,13 +47,15 @@ public class Modele extends Activity {
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
         TextView tv = new TextView(this);
         tv.setText("Nom de l'exercice " + String.valueOf(mActiviteCounter) + " :");
-
+        tv.setId(mActiviteCounter);
+        
         if( mActiviteCounter != 1 ){
-            params.addRule(RelativeLayout.RIGHT_OF, 1 );
+            params.addRule(RelativeLayout.BELOW, tv.getId() - 1 );
         }
 
         tv.setLayoutParams(params);
         tv.setTextSize(20);
+        tv.setId(mActiviteCounter);
 
         ++mActiviteCounter;
         RelativeLayout layout = (RelativeLayout)findViewById(R.id.infos);
