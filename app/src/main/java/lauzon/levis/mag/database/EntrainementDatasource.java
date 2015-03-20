@@ -29,9 +29,9 @@ public class EntrainementDatasource {
         dbHelper.close();
     }
 
-    public exercice createComment(String comment) {
+    public void createExercice(String nom) {
         ContentValues values = new ContentValues();
-        values.put(MySQLiteHelper.COLUMN_NOM, comment);
+        values.put(MySQLiteHelper.COLUMN_NOM, nom);
         long insertId = database.insert(MySQLiteHelper.TABLE_EXERCICE, null,
                 values);
         Cursor cursor = database.query(MySQLiteHelper.TABLE_EXERCICE,
@@ -40,17 +40,16 @@ public class EntrainementDatasource {
         cursor.moveToFirst();
         exercice newExercice = cursorToExercice(cursor);
         cursor.close();
-        return newExercice;
     }
 
-    public void deleteComment(exercice Exercice) {
+    public void deleteExercice(exercice Exercice) {
         long id = Exercice.getId();
         System.out.println("Comment deleted with id: " + id);
         database.delete(MySQLiteHelper.TABLE_EXERCICE, MySQLiteHelper.COLUMN_ID
                 + " = " + id, null);
     }
 
-    public List<exercice> getAllComments() {
+    public List<exercice> getAllExercices() {
         List<exercice> Exercices = new ArrayList<exercice>();
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_EXERCICE,

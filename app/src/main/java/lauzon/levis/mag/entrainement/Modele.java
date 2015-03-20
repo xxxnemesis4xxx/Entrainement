@@ -8,13 +8,21 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.List;
+import java.util.Random;
+
+import lauzon.levis.mag.database.EntrainementDatasource;
+import lauzon.levis.mag.database.exercice;
+
 
 public class Modele extends Activity {
+    private EntrainementDatasource datasource;
 
     private int mActiviteCounter = 1;
     private int mExerciceCounter = 1;
@@ -23,6 +31,22 @@ public class Modele extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modele);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+
+        datasource = new EntrainementDatasource(this);
+        datasource.open();
+
+        /*
+        List<exercice> values = datasource.getAllExercices();
+
+        String resultats = "";
+        for (int i = 0; i < values.size(); i++) {
+            resultats += values.get(i).getNom() + "\n";
+        }
+
+        Context context = getApplicationContext();
+        Toast toast = Toast.makeText(context,resultats,Toast.LENGTH_SHORT);
+        toast.show();
+        */
     }
 
 
@@ -99,11 +123,11 @@ public class Modele extends Activity {
 
             et = (EditText)findViewById(idText);
             display += et.getText().toString() + "\n";
+            datasource.createExercice(et.getText().toString());
             idText += 2;
         }
 
-        Toast toast = Toast.makeText(context,display,Toast.LENGTH_SHORT);
-
+        Toast toast = Toast.makeText(context,"Sauvegarde Réussi",Toast.LENGTH_SHORT);
         toast.show();
     }
 }
