@@ -36,6 +36,10 @@
             android:name="lauzon.levis.mag.Models.ModelPanel"
             android:label="@string/title_activity_model_panel" >
         </activity>
+        <activity
+            android:name="lauzon.levis.mag.Models.ViewModels"
+            android:label="@string/title_activity_view_models" >
+        </activity>
     </application>
 
 </manifest>
