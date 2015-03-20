@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -48,17 +49,19 @@ public class Modele extends Activity {
         TextView tv = new TextView(this);
         tv.setText("Nom de l'exercice " + String.valueOf(mActiviteCounter) + " :");
         tv.setId(mActiviteCounter);
+        tv.setLayoutParams(params);
+        tv.setTextSize(20);
+
+
 
         if( mActiviteCounter != 1 ){
             params.addRule(RelativeLayout.BELOW, tv.getId() - 1 );
+        } else {
+            params.addRule(RelativeLayout.BELOW, findViewById(R.id.textView2).getId());
         }
 
-        tv.setLayoutParams(params);
-        tv.setTextSize(20);
-        tv.setId(mActiviteCounter);
-
         ++mActiviteCounter;
-        RelativeLayout layout = (RelativeLayout)findViewById(R.id.infos);
+        RelativeLayout layout = (RelativeLayout)findViewById(R.id.relativeLayout2);
         layout.addView(tv);
     }
 }
