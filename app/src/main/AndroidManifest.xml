@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Modele"
+            android:name="lauzon.levis.mag.Models.Modele"
             android:label="@string/title_activity_modele" >
         </activity>
         <activity

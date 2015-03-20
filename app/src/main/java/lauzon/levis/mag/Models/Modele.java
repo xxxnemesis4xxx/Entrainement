@@ -1,4 +1,4 @@
-package lauzon.levis.mag.entrainement;
+package lauzon.levis.mag.Models;
 
 import android.app.Activity;
 import android.content.Context;
@@ -17,6 +17,8 @@ import java.util.List;
 
 import lauzon.levis.mag.database.EntrainementDatasource;
 import lauzon.levis.mag.database.exercice;
+import lauzon.levis.mag.entrainement.MainActivity;
+import lauzon.levis.mag.entrainement.R;
 
 
 public class Modele extends Activity {
