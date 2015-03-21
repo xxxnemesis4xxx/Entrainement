@@ -1,4 +1,4 @@
-package lauzon.levis.mag.entrainement;
+package lauzon.levis.mag.Models;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,13 +13,12 @@ import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.List;
-
 import lauzon.levis.mag.database.EntrainementDatasource;
-import lauzon.levis.mag.database.exercice;
+import lauzon.levis.mag.entrainement.MainActivity;
+import lauzon.levis.mag.entrainement.R;
 
 
-public class Modele extends Activity {
+public class CreateModel extends Activity {
     private EntrainementDatasource datasource;
 
     private int mActiviteCounter = 1;
@@ -107,8 +106,7 @@ public class Modele extends Activity {
         for(int i = 1; i < mExerciceCounter; i++) {
 
             et = (EditText)findViewById(idText);
-            display += et.getText().toString() + "\n";
-            datasource.createExercice(et.getText().toString(),1);
+            datasource.createExercice(et.getText().toString(),idModel);
             idText += 2;
         }
 

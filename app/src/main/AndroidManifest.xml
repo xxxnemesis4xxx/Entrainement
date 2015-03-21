@@ -17,7 +17,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Modele"
+            android:name="lauzon.levis.mag.Models.CreateModel"
             android:label="@string/title_activity_modele" >
         </activity>
         <activity
@@ -31,6 +31,18 @@
         <activity
             android:name=".ViewWeek"
             android:label="@string/title_activity_view_week" >
+        </activity>
+        <activity
+            android:name="lauzon.levis.mag.Models.ModelPanel"
+            android:label="@string/title_activity_model_panel" >
+        </activity>
+        <activity
+            android:name="lauzon.levis.mag.Models.ViewModels"
+            android:label="@string/title_activity_view_models" >
+        </activity>
+        <activity
+            android:name="lauzon.levis.mag.Models.ViewExercice"
+            android:label="@string/title_activity_view_exercice" >
         </activity>
     </application>
 

@@ -46,12 +46,12 @@ public class EntrainementDatasource {
 
     public void createExercice(String nom,long id) {
         ContentValues values = new ContentValues();
-        values.put(MySQLiteHelper.COLUMN_NOM, nom);
         values.put(MySQLiteHelper.COLUMN_REF_MODEL,id);
+        values.put(MySQLiteHelper.COLUMN_NOM, nom);
         long insertId = database.insert(MySQLiteHelper.TABLE_EXERCICE, null,
                 values);
         Cursor cursor = database.query(MySQLiteHelper.TABLE_EXERCICE,
-                allColumns, MySQLiteHelper.COLUMN_ID + " = " + insertId, null,
+                null, MySQLiteHelper.COLUMN_ID + " = " + insertId, null,
                 null, null, null);
         cursor.moveToFirst();
         exercice newExercice = cursorToExercice(cursor);
@@ -69,7 +69,7 @@ public class EntrainementDatasource {
         List<exercice> Exercices = new ArrayList<exercice>();
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_EXERCICE,
-                allColumns, null, null, null, null, null);
+                null, null, null, null, null, null);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
@@ -82,10 +82,48 @@ public class EntrainementDatasource {
         return Exercices;
     }
 
+    public List<model> getAllModels() {
+        List<model> Models = new ArrayList<model>();
+
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_MODEL,
+                allColumns, null, null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            model Model = cursorToModel(cursor);
+            Models.add(Model);
+            cursor.moveToNext();
+        }
+
+        // make sure to close the cursor
+        cursor.close();
+
+        return Models;
+    }
+
+    public List<exercice> getALLExerciceForOneModel(long ID) {
+        List<exercice> Exercices = new ArrayList<exercice>();
+
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_EXERCICE,
+                null, MySQLiteHelper.COLUMN_REF_MODEL + " = " + ID, null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            exercice Exercice = cursorToExercice(cursor);
+            Exercices.add(Exercice);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+
+        return Exercices;
+    }
+
     private exercice cursorToExercice(Cursor cursor) {
         exercice Exercice = new exercice();
         Exercice.setId(cursor.getLong(0));
         Exercice.setNom(cursor.getString(1));
+        Exercice.setRefidmodel(cursor.getLong(2));
         return Exercice;
     }
 
