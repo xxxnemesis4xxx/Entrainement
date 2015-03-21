@@ -44,6 +44,10 @@
             android:name="lauzon.levis.mag.Models.ViewExercice"
             android:label="@string/title_activity_view_exercice" >
         </activity>
+        <activity
+            android:name="lauzon.levis.mag.Models.Delete"
+            android:label="@string/title_activity_delete" >
+        </activity>
     </application>
 
 </manifest>
