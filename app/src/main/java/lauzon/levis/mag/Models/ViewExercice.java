@@ -1,18 +1,42 @@
 package lauzon.levis.mag.Models;
 
 import android.app.Activity;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
+import android.widget.TextView;
 
+import java.util.List;
+
+import lauzon.levis.mag.database.EntrainementDatasource;
+import lauzon.levis.mag.database.exercice;
 import lauzon.levis.mag.entrainement.R;
 
 public class ViewExercice extends Activity {
-
+    private EntrainementDatasource datasource;
+    private int mCounterExercices = 1;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_exercice);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+
+        Bundle bundle = getIntent().getExtras();
+        long id = bundle.getLong("ID");
+
+        //Get our Database
+        datasource = new EntrainementDatasource(this);
+        datasource.open();
+
+        //Get out List of Models
+        List<exercice> values = datasource.getALLExerciceForOneModel(id);
+
+        for (int i = 0; i < values.size(); i++) {
+            LoadExerciceLayout(values.get(i));
+            mCounterExercices++;
+        }
     }
 
 
@@ -25,9 +49,6 @@ public class ViewExercice extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -36,5 +57,23 @@ public class ViewExercice extends Activity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    public void LoadExerciceLayout(final exercice value) {
+        RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
+        RelativeLayout layout = (RelativeLayout)findViewById(R.id.LayoutExercice);
+
+        final TextView tv = new TextView(this);
+        tv.setText("Exercice " + String.valueOf(mCounterExercices) + " : " + String.valueOf(value.getNom()));
+        tv.setLayoutParams(params);
+        tv.setTextSize(20);
+        tv.setId(mCounterExercices);
+        tv.setHeight(90);
+
+        if (mCounterExercices > 1) {
+            params.addRule(RelativeLayout.BELOW, tv.getId() - 1);
+        }
+
+        layout.addView(tv);
     }
 }
