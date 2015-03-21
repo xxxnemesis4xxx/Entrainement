@@ -51,4 +51,9 @@ public class ModelPanel extends Activity {
         Intent intent = new Intent(this, ViewModels.class);
         startActivity(intent);
     }
+
+    public void changeDisplayToDeleteModel(View view) {
+        Intent intent = new Intent(this, Delete.class);
+        startActivity(intent);
+    }
 }
