@@ -58,11 +58,9 @@ public class EntrainementDatasource {
         cursor.close();
     }
 
-    public void deleteExercice(exercice Exercice) {
-        long id = Exercice.getId();
-        System.out.println("Comment deleted with id: " + id);
-        database.delete(MySQLiteHelper.TABLE_EXERCICE, MySQLiteHelper.COLUMN_ID
-                + " = " + id, null);
+    public void deleteModel(long ID) {
+        database.delete(MySQLiteHelper.TABLE_MODEL, MySQLiteHelper.COLUMN_ID
+                + " = " + ID, null);
     }
 
     public List<exercice> getAllExercices() {
