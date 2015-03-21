@@ -106,8 +106,7 @@ public class CreateModel extends Activity {
         for(int i = 1; i < mExerciceCounter; i++) {
 
             et = (EditText)findViewById(idText);
-            display += et.getText().toString() + "\n";
-            datasource.createExercice(et.getText().toString(),1);
+            datasource.createExercice(et.getText().toString(),idModel);
             idText += 2;
         }
 
