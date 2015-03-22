@@ -53,5 +53,26 @@ public class Planifier extends Activity {
         return super.onOptionsItemSelected(item);
     }
 
+    public void nextWeek(View view) {
+        CalendarView cal = (CalendarView) findViewById(R.id.calendarView);
+
+        //Set the time
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(cal.getMinDate());
+
+        calendar.add(Calendar.WEEK_OF_YEAR, 1);
+        long datemin = calendar.getTime().getTime();
+        calendar.getTime().getTime();
+
+        calendar.add(Calendar.WEEK_OF_YEAR, 1);
+        long datemax = calendar.getTime().getTime();
+
+        cal.setMaxDate(datemax);
+        cal.setMinDate(datemin);
+    }
+
+    public void previousWeek() {
+
+    }
 
 }
