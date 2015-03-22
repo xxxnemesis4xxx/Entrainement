@@ -70,4 +70,9 @@ public class Goals extends Activity {
     public void closeCurrentIntent(View view) {
         finish();
     }
+
+    public void saveGoalInDB(View view) {
+        EditText et = (EditText)findViewById(R.id.etGoal);
+        datasource.updateExercice(et.getText().toString(),idExercice);
+    }
 }
