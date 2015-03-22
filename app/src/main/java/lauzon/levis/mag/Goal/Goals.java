@@ -1,9 +1,11 @@
-package lauzon.levis.mag.entrainement;
+package lauzon.levis.mag.Goal;
 
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import lauzon.levis.mag.entrainement.R;
 
 
 public class Goals extends Activity {

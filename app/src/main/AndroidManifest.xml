@@ -25,7 +25,7 @@
             android:label="@string/title_activity_planifier" >
         </activity>
         <activity
-            android:name=".Goals"
+            android:name="lauzon.levis.mag.Goal.Goals"
             android:label="@string/title_activity_goals" >
         </activity>
         <activity

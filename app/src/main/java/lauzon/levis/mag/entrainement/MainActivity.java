@@ -7,7 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import lauzon.levis.mag.Models.CreateModel;
+import lauzon.levis.mag.Goal.Goals;
 import lauzon.levis.mag.Models.ModelPanel;
 
 
