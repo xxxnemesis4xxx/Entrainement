@@ -4,6 +4,11 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.CalendarView;
+
+import java.util.Calendar;
+import java.util.Date;
 
 
 public class Planifier extends Activity {
@@ -12,6 +17,17 @@ public class Planifier extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_planifier);
+
+        Calendar calendar = Calendar.getInstance();
+        long datemin = calendar.getTime().getTime() - 1000;
+
+        calendar.add(Calendar.WEEK_OF_YEAR, 1);
+        long datemax = calendar.getTime().getTime();
+
+
+        CalendarView cal = (CalendarView) findViewById(R.id.calendarView);
+        cal.setMaxDate(datemax);
+        cal.setMinDate(datemin);
     }
 
 
@@ -36,4 +52,6 @@ public class Planifier extends Activity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
