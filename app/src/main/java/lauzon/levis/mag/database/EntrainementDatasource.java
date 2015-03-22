@@ -119,6 +119,23 @@ public class EntrainementDatasource {
         return Exercices;
     }
 
+    public exercice getExercice(long ID) {
+        exercice Exercice = new exercice();
+
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_EXERCICE,
+                null, MySQLiteHelper.COLUMN_ID + " = " + ID, null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Exercice = cursorToExercice(cursor);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+
+        return Exercice;
+    }
+
     private exercice cursorToExercice(Cursor cursor) {
         exercice Exercice = new exercice();
         Exercice.setId(cursor.getLong(0));
