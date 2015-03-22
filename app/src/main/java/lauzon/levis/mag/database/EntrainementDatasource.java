@@ -58,6 +58,13 @@ public class EntrainementDatasource {
         cursor.close();
     }
 
+    public void updateExercice(String goal, long id) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_GOAL, goal);
+
+        database.update(MySQLiteHelper.TABLE_EXERCICE,values,MySQLiteHelper.COLUMN_ID + " = " + id, null);
+    }
+
     public void deleteModel(long ID) {
         database.delete(MySQLiteHelper.TABLE_MODEL, MySQLiteHelper.COLUMN_ID
                 + " = " + ID, null);
@@ -141,6 +148,7 @@ public class EntrainementDatasource {
         Exercice.setId(cursor.getLong(0));
         Exercice.setNom(cursor.getString(1));
         Exercice.setRefidmodel(cursor.getLong(2));
+        Exercice.setGoal(cursor.getString(3));
         return Exercice;
     }
 
