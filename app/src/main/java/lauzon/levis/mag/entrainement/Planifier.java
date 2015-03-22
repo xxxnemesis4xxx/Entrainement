@@ -71,7 +71,22 @@ public class Planifier extends Activity {
         cal.setMinDate(datemin);
     }
 
-    public void previousWeek() {
+    public void previousWeek(View view) {
+        CalendarView cal = (CalendarView) findViewById(R.id.calendarView);
+
+        //Set the time
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(cal.getMinDate());
+
+        //calendar.add(Calendar.WEEK_OF_YEAR, -1);
+        long datemax = calendar.getTime().getTime() + 1000;
+        calendar.getTime().getTime();
+
+        calendar.add(Calendar.WEEK_OF_YEAR, -1);
+        long datemin = calendar.getTime().getTime() + 1000;
+
+        cal.setMinDate(datemin);
+        cal.setMaxDate(datemax);
 
     }
 
