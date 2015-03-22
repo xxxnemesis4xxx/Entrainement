@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -28,6 +29,7 @@ public class CreateModel extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_modele);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
+        getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         datasource = new EntrainementDatasource(this);
         datasource.open();
@@ -91,8 +93,7 @@ public class CreateModel extends Activity {
     }
 
     public void changeDisplayToActivity(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     public void saveModeleInDB(View view) {

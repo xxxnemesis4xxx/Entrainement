@@ -12,11 +12,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NOM = "nom";
     public static final String COLUMN_REF_MODEL = "idmodel";
+    public static final String COLUMN_GOAL = "goal";
+
     public static final String TABLE_MODEL = "model";
     public static final String COLUMN_ID_MODEL = "_id";
     public static final String COLUMN_NOM_MODEL = "nom";
+
     private static final String DATABASE_NAME = "entrainement.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 5;
 
     // Database creation sql statement
     private static final String CREATE_TABLE_MODEL = "create table "
@@ -27,7 +30,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     private static final String CREATE_TABLE_EXERCICE = "create table "
             + TABLE_EXERCICE + "(" + COLUMN_ID
             + " integer primary key autoincrement, " + COLUMN_NOM
-            + " text not null, " + COLUMN_REF_MODEL + " integer NOT NULL, FOREIGN KEY ("
+            + " text not null, " + COLUMN_REF_MODEL + " integer NOT NULL, " + COLUMN_GOAL + " TEXT, FOREIGN KEY ("
             + COLUMN_REF_MODEL +") REFERENCES " + TABLE_MODEL + " ("+ COLUMN_ID +"));";
 
     public MySQLiteHelper(Context context) {

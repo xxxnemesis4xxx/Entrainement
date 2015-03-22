@@ -58,6 +58,13 @@ public class EntrainementDatasource {
         cursor.close();
     }
 
+    public void updateExercice(String goal, long id) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_GOAL, goal);
+
+        database.update(MySQLiteHelper.TABLE_EXERCICE,values,MySQLiteHelper.COLUMN_ID + " = " + id, null);
+    }
+
     public void deleteModel(long ID) {
         database.delete(MySQLiteHelper.TABLE_MODEL, MySQLiteHelper.COLUMN_ID
                 + " = " + ID, null);
@@ -119,11 +126,29 @@ public class EntrainementDatasource {
         return Exercices;
     }
 
+    public exercice getExercice(long ID) {
+        exercice Exercice = new exercice();
+
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_EXERCICE,
+                null, MySQLiteHelper.COLUMN_ID + " = " + ID, null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            Exercice = cursorToExercice(cursor);
+            cursor.moveToNext();
+        }
+        // make sure to close the cursor
+        cursor.close();
+
+        return Exercice;
+    }
+
     private exercice cursorToExercice(Cursor cursor) {
         exercice Exercice = new exercice();
         Exercice.setId(cursor.getLong(0));
         Exercice.setNom(cursor.getString(1));
         Exercice.setRefidmodel(cursor.getLong(2));
+        Exercice.setGoal(cursor.getString(3));
         return Exercice;
     }
 

@@ -18,4 +18,5 @@
     <string name="title_activity_view_models">Vos Models</string>
     <string name="title_activity_view_exercice">Les Exercices</string>
     <string name="title_activity_delete">Gestion des Modèles</string>
+    <string name="title_activity_goal_models">Objectifs</string>
 </resources>

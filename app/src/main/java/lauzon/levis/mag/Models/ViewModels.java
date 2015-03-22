@@ -99,4 +99,8 @@ public class ViewModels extends Activity {
         layout.addView(tv);
         layout.addView(button);
     }
+
+    public void closeCurrentIntent(View view) {
+        finish();
+    }
 }
