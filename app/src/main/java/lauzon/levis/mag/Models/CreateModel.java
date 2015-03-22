@@ -93,8 +93,7 @@ public class CreateModel extends Activity {
     }
 
     public void changeDisplayToActivity(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        finish();
     }
 
     public void saveModeleInDB(View view) {

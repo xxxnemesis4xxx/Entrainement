@@ -104,4 +104,8 @@ public class ViewExercice extends Activity {
         layout.addView(tv);
         layout.addView(button);
     }
+
+    public void closeCurrentIntent(View view) {
+        finish();
+    }
 }
