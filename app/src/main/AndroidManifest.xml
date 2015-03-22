@@ -48,6 +48,10 @@
             android:name="lauzon.levis.mag.Models.Delete"
             android:label="@string/title_activity_delete" >
         </activity>
+        <activity
+            android:name="lauzon.levis.mag.Goal.GoalModels"
+            android:label="@string/title_activity_goal_models" >
+        </activity>
     </application>
 
 </manifest>
