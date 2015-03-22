@@ -9,7 +9,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/editText"
+        android:id="@+id/etGoal"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:layout_alignParentEnd="true"
@@ -31,14 +31,16 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sauvegarde"
-            android:id="@+id/button8"
+            android:id="@+id/saveGoal"
             android:layout_weight="1" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Retour"
-            android:id="@+id/button9"
-            android:layout_weight="1" />
+            android:id="@+id/returnGoal"
+            android:layout_weight="1"
+            android:nestedScrollingEnabled="false"
+            android:onClick="closeCurrentIntent" />
     </LinearLayout>
 </RelativeLayout>
