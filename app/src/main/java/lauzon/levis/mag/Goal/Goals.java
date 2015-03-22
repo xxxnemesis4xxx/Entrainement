@@ -14,6 +14,11 @@ public class Goals extends Activity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_goals);
+
+        Bundle bundle = getIntent().getExtras();
+        long id = bundle.getLong("ID");
+
+
     }
 
 
