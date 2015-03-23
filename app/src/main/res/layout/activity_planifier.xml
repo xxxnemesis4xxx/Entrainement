@@ -45,15 +45,15 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/scrollView6"
-        android:layout_below="@+id/button8"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="75dp"
         android:layout_alignParentEnd="true"
-        android:layout_above="@+id/linearLayout3" >
+        android:layout_above="@+id/linearLayout3"
+        android:layout_below="@+id/textView7">
 
-        <RelativeLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"></RelativeLayout>
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/listView2" />
     </ScrollView>
 
     <LinearLayout
@@ -75,5 +75,16 @@
             android:layout_weight="1"
             android:onClick="changeDisplayToActivity" />
     </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Small Text"
+        android:id="@+id/textView7"
+        android:layout_marginTop="69dp"
+        android:layout_below="@+id/button8"
+        android:layout_alignParentStart="true"
+        android:visibility="invisible" />
 
 </RelativeLayout>

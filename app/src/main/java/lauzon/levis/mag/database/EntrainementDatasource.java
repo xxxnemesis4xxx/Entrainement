@@ -128,12 +128,12 @@ public class EntrainementDatasource {
         return Exercices;
     }
 
-    public List<entrainement> getAllEntrainements(Date datedebut, Date datefin) {
+    public List<entrainement> getAllEntrainements(long datedebut, long datefin) {
         List<entrainement> Entrainements = new ArrayList<entrainement>();
 
-        Cursor cursor = database.query(MySQLiteHelper.TABLE_EXERCICE,
-                null, MySQLiteHelper.COLUMN_DATE + " >= " + datedebut.getTime() + " and " + MySQLiteHelper.COLUMN_DATE
-                        + " <= " + datefin.getTime(), null, null, null, null);
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_ENTRAINEMENT,
+                null, MySQLiteHelper.COLUMN_DATE + " >= " + datedebut + " and " + MySQLiteHelper.COLUMN_DATE
+                        + " <= " + datefin, null, null, null, null);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {

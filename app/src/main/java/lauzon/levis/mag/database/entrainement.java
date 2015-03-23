@@ -1,7 +1,5 @@
 package lauzon.levis.mag.database;
 
-import java.sql.Date;
-
 public class entrainement {
     private long id;
     private long date;

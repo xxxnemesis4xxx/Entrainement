@@ -1,19 +1,28 @@
 package lauzon.levis.mag.entrainement;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
+import android.widget.ListView;
+
+import java.sql.Date;
 import java.util.Calendar;
+import java.util.List;
 
 import lauzon.levis.mag.Schedule.TrainingDay;
+import lauzon.levis.mag.database.EntrainementDatasource;
+import lauzon.levis.mag.database.entrainement;
+import lauzon.levis.mag.database.model;
 
 public class Planifier extends Activity {
     private boolean bButtonClicked = false;
+    private EntrainementDatasource datasource;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -45,6 +54,38 @@ public class Planifier extends Activity {
                 }
             }
         });
+
+        datasource = new EntrainementDatasource(this);
+        datasource.open();
+
+        List<entrainement> values = datasource.getAllEntrainements(datemin,datemax);
+
+        ArrayAdapter<entrainement> adapter = new ArrayAdapter<entrainement>(this,
+                android.R.layout.simple_list_item_1, values);
+
+        final ListView list = (ListView)findViewById(R.id.listView2);
+        list.setAdapter(adapter);
+
+        /*
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                /*
+                Bundle bundle = getIntent().getExtras();
+
+                //Get Date
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(bundle.getInt("year"), bundle.getInt("month"), bundle.getInt("day"));
+                Date newDate = new Date(calendar.getTime().getTime());
+
+                //Get Model Id
+                Object o = list.getItemAtPosition(position);
+                model str=(model)o;//As you are using Default String Adapter
+
+                datasource.createTrainingDay(newDate, String.valueOf(((model) o).getId()));
+                */
+        //    }
+        //});
     }
 
 
@@ -57,12 +98,8 @@ public class Planifier extends Activity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
