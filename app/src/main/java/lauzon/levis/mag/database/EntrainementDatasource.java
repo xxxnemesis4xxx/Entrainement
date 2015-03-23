@@ -8,8 +8,9 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+
+import java.sql.Date;
 
 public class EntrainementDatasource {
     // Database fields
@@ -144,6 +145,14 @@ public class EntrainementDatasource {
         return Exercice;
     }
 
+    public void createTrainingDay(Date date,String idModel) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_REF_MODEL,idModel);
+        values.put(MySQLiteHelper.COLUMN_DATE, date.getTime());
+        long insertId = database.insert(MySQLiteHelper.TABLE_ENTRAINEMENT, null,
+                values);
+    }
+
     private exercice cursorToExercice(Cursor cursor) {
         exercice Exercice = new exercice();
         Exercice.setId(cursor.getLong(0));
@@ -160,11 +169,4 @@ public class EntrainementDatasource {
         return Model;
     }
 
-    private void createTrainingDay(Date date,String idModel) {
-        ContentValues values = new ContentValues();
-        values.put(MySQLiteHelper.COLUMN_REF_MODEL,idModel);
-        values.put(MySQLiteHelper.COLUMN_DATE, date.getTime());
-        long insertId = database.insert(MySQLiteHelper.TABLE_ENTRAINEMENT, null,
-                values);
-    }
 }
