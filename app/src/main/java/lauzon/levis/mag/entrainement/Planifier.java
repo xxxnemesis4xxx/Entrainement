@@ -8,13 +8,9 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.CalendarView;
-import android.widget.Toast;
-
 import java.util.Calendar;
 
-import lauzon.levis.mag.Models.ViewExercice;
 import lauzon.levis.mag.Schedule.TrainingDay;
-
 
 public class Planifier extends Activity {
     private boolean bButtonClicked = false;
