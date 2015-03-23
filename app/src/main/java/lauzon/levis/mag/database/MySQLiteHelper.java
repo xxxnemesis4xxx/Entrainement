@@ -24,7 +24,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_INFOSUPP = "retour";
 
     private static final String DATABASE_NAME = "entrainement.db";
-    private static final int DATABASE_VERSION = 6;
+    private static final int DATABASE_VERSION = 8;
 
     // Database creation sql statement
     private static final String CREATE_TABLE_MODEL = "create table "
@@ -39,11 +39,11 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + COLUMN_REF_MODEL +") REFERENCES " + TABLE_MODEL + " ("+ COLUMN_ID +"));";
 
     private static final String CREATE_TABLE_ENTRAINEMENT = "create table "
-            + TABLE_ENTRAINEMENT + "(" + COLUMN_ID + " interger primary key autoincrement, "
+            + TABLE_ENTRAINEMENT + "(" + COLUMN_ID + " integer primary key autoincrement, "
             + COLUMN_DATE + " DATETIME NOT NULL, " + COLUMN_RATING + " INTERGER NOT NULL, "
             + COLUMN_INFOSUPP + " TEXT, " + COLUMN_REF_MODEL + " integer NOT NULL, "
-            + COLUMN_GOAL + " TEXT, FOREIGN KEY (" + COLUMN_REF_MODEL +") REFERENCES "
-            + TABLE_MODEL + " ("+ COLUMN_ID +"));";
+            + "FOREIGN KEY (" + COLUMN_REF_MODEL +") REFERENCES "
+            + TABLE_ENTRAINEMENT + " ("+ COLUMN_ID +"));";
 
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
