@@ -19,4 +19,5 @@
     <string name="title_activity_view_exercice">Les Exercices</string>
     <string name="title_activity_delete">Gestion des Modèles</string>
     <string name="title_activity_goal_models">Objectifs</string>
+    <string name="title_activity_training_day">Notepad de l\'entrainement</string>
 </resources>
