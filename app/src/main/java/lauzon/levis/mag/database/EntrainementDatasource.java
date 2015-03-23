@@ -128,6 +128,25 @@ public class EntrainementDatasource {
         return Exercices;
     }
 
+    public List<entrainement> getAllEntrainements(Date datedebut, Date datefin) {
+        List<entrainement> Entrainements = new ArrayList<entrainement>();
+
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_EXERCICE,
+                null, MySQLiteHelper.COLUMN_DATE + " >= " + datedebut.getTime() + " and " + MySQLiteHelper.COLUMN_DATE
+                        + " <= " + datefin.getTime(), null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            entrainement Entrainement = cursorToEntrainement(cursor);
+            Entrainements.add(Entrainement);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+
+        return Entrainements;
+    }
+
     public exercice getExercice(long ID) {
         exercice Exercice = new exercice();
 
@@ -167,6 +186,17 @@ public class EntrainementDatasource {
         Model.setId(cursor.getLong(0));
         Model.setNom(cursor.getString(1));
         return Model;
+    }
+
+    private entrainement cursorToEntrainement(Cursor cursor) {
+        entrainement Entrainement = new entrainement();
+        Entrainement.setId(cursor.getLong(0));
+        Entrainement.setDate(cursor.getLong(1));
+        Entrainement.setInfosupp(cursor.getString(3));
+        Entrainement.setRating(cursor.getInt(2));
+        Entrainement.setRefidmodel(cursor.getLong(4));
+
+        return Entrainement;
     }
 
 }
