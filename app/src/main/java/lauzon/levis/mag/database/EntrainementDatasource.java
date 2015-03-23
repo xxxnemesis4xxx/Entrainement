@@ -8,6 +8,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class EntrainementDatasource {
@@ -157,5 +158,13 @@ public class EntrainementDatasource {
         Model.setId(cursor.getLong(0));
         Model.setNom(cursor.getString(1));
         return Model;
+    }
+
+    private void createTrainingDay(Date date,String idModel) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_REF_MODEL,idModel);
+        values.put(MySQLiteHelper.COLUMN_DATE, date.getTime());
+        long insertId = database.insert(MySQLiteHelper.TABLE_ENTRAINEMENT, null,
+                values);
     }
 }
