@@ -10,11 +10,10 @@ import android.widget.CalendarView;
 import android.widget.Toast;
 
 import java.util.Calendar;
-import java.util.Date;
 
 
 public class Planifier extends Activity {
-
+    private boolean bButtonClicked = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,7 +23,7 @@ public class Planifier extends Activity {
         long datemin = calendar.getTime().getTime() - 1000;
 
         calendar.add(Calendar.WEEK_OF_YEAR, 1);
-        long datemax = calendar.getTime().getTime();
+        long datemax = calendar.getTime().getTime() - 1000;
 
 
         CalendarView cal = (CalendarView) findViewById(R.id.calendarView);
@@ -37,10 +36,12 @@ public class Planifier extends Activity {
             @Override
             public void onSelectedDayChange(CalendarView view, int year, int month,
                                             int dayOfMonth) {
-                Context context = getApplicationContext();
-                String dateAffichage = String.valueOf(dayOfMonth) + "/" + String.valueOf(month + 1) + "/" + String.valueOf(year);
-                Toast toast = Toast.makeText(context,dateAffichage,Toast.LENGTH_SHORT);
-                toast.show();
+                if (bButtonClicked == false) {
+                    Context context = getApplicationContext();
+                    String dateAffichage = String.valueOf(dayOfMonth) + "/" + String.valueOf(month + 1) + "/" + String.valueOf(year);
+                    Toast toast = Toast.makeText(context, dateAffichage, Toast.LENGTH_SHORT);
+                    toast.show();
+                }
             }
         });
     }
@@ -69,24 +70,28 @@ public class Planifier extends Activity {
     }
 
     public void nextWeek(View view) {
-        CalendarView cal = (CalendarView) findViewById(R.id.calendarView);
+            bButtonClicked = true;
+            CalendarView cal = (CalendarView) findViewById(R.id.calendarView);
 
-        //Set the time
-        Calendar calendar = Calendar.getInstance();
-        calendar.setTimeInMillis(cal.getMinDate());
+            //Set the time
+            Calendar calendar = Calendar.getInstance();
+            calendar.setTimeInMillis(cal.getMinDate());
 
-        calendar.add(Calendar.WEEK_OF_YEAR, 1);
-        long datemin = calendar.getTime().getTime();
-        calendar.getTime().getTime();
+            calendar.add(Calendar.WEEK_OF_YEAR, 1);
+            long datemin = calendar.getTime().getTime() - 1000;
+            calendar.getTime().getTime();
 
-        calendar.add(Calendar.WEEK_OF_YEAR, 1);
-        long datemax = calendar.getTime().getTime();
+            calendar.add(Calendar.WEEK_OF_YEAR, 1);
+            long datemax = calendar.getTime().getTime() - 1000;
 
-        cal.setMaxDate(datemax);
-        cal.setMinDate(datemin);
+            cal.setMinDate(datemin);
+            cal.setMaxDate(datemax);
+
+            bButtonClicked = false;
     }
 
     public void previousWeek(View view) {
+        bButtonClicked = true;
         CalendarView cal = (CalendarView) findViewById(R.id.calendarView);
 
         //Set the time
@@ -102,7 +107,10 @@ public class Planifier extends Activity {
 
         cal.setMinDate(datemin);
         cal.setMaxDate(datemax);
-
+        bButtonClicked = false;
     }
 
+    public void changeDisplayToActivity(View view) {
+        finish();
+    }
 }
