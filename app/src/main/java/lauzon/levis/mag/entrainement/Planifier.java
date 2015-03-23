@@ -2,6 +2,7 @@ package lauzon.levis.mag.entrainement;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,6 +11,9 @@ import android.widget.CalendarView;
 import android.widget.Toast;
 
 import java.util.Calendar;
+
+import lauzon.levis.mag.Models.ViewExercice;
+import lauzon.levis.mag.Schedule.TrainingDay;
 
 
 public class Planifier extends Activity {
@@ -37,10 +41,11 @@ public class Planifier extends Activity {
             public void onSelectedDayChange(CalendarView view, int year, int month,
                                             int dayOfMonth) {
                 if (bButtonClicked == false) {
-                    Context context = getApplicationContext();
-                    String dateAffichage = String.valueOf(dayOfMonth) + "/" + String.valueOf(month + 1) + "/" + String.valueOf(year);
-                    Toast toast = Toast.makeText(context, dateAffichage, Toast.LENGTH_SHORT);
-                    toast.show();
+                    Intent intent = new Intent(getBaseContext(), TrainingDay.class);
+                    intent.putExtra("year",year);
+                    intent.putExtra("month",month + 1);
+                    intent.putExtra("day",dayOfMonth);
+                    startActivity(intent);
                 }
             }
         });
