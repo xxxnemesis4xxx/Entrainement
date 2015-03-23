@@ -1,6 +1,7 @@
 package lauzon.levis.mag.Schedule;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -10,7 +11,10 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.Calendar;
 import java.util.List;
+
+import java.sql.Date;
 
 import lauzon.levis.mag.database.EntrainementDatasource;
 import lauzon.levis.mag.database.model;
@@ -38,10 +42,18 @@ public class TrainingDay extends Activity {
         list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
+                Bundle bundle = getIntent().getExtras();
 
+                //Get Date
+                Calendar calendar = Calendar.getInstance();
+                calendar.set(bundle.getInt("year"), bundle.getInt("month"), bundle.getInt("day"));
+                Date newDate = new Date(calendar.getTime().getTime());
+
+                //Get Model Id
                 Object o = list.getItemAtPosition(position);
                 model str=(model)o;//As you are using Default String Adapter
-                Toast.makeText(getBaseContext(), ((model) o).getNom(), Toast.LENGTH_SHORT).show();
+
+                datasource.createTrainingDay(newDate, String.valueOf(((model) o).getId()));
             }
         });
     }
