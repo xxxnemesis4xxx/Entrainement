@@ -4,7 +4,7 @@ import java.sql.Date;
 
 public class entrainement {
     private long id;
-    private Date date;
+    private long date;
     private int rating;
     private String infosupp;
     private long refidmodel;
@@ -41,11 +41,11 @@ public class entrainement {
         this.rating = rating;
     }
 
-    public Date getDate() {
+    public long getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(long date) {
         this.date = date;
     }
 }
