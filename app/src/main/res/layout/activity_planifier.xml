@@ -14,20 +14,20 @@
         android:layout_alignParentStart="true"
         android:showWeekNumber="false"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:clickable="true" />
 
     <Button
-        style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Précédant"
         android:id="@+id/button8"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_alignBottom="@+id/button9"
         android:minWidth="200px"
         android:nestedScrollingEnabled="false"
-        android:onClick="previousWeek" />
+        android:onClick="previousWeek"
+        android:clickable="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -38,6 +38,36 @@
         android:layout_alignParentEnd="true"
         android:minWidth="200px"
         android:nestedScrollingEnabled="false"
-        android:onClick="nextWeek" />
+        android:onClick="nextWeek"
+        android:clickable="true" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/scrollView6"
+        android:layout_below="@+id/button8"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="75dp"
+        android:layout_alignParentEnd="true"
+        android:layout_above="@+id/linearLayout3" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/button8"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="false"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/linearLayout3">
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Retour"
+            android:id="@+id/button11"
+            android:layout_weight="1" />
+    </LinearLayout>
 
 </RelativeLayout>
