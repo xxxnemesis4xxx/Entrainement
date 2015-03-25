@@ -41,20 +41,12 @@
         android:onClick="nextWeek"
         android:clickable="true" />
 
-    <ScrollView
+    <ListView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/scrollView6"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentEnd="true"
-        android:layout_above="@+id/linearLayout3"
-        android:layout_below="@+id/textView7">
-
-        <ListView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/listView2" />
-    </ScrollView>
+        android:id="@+id/listView2"
+        android:layout_below="@+id/textView7"
+        android:layout_above="@+id/linearLayout3" />
 
     <LinearLayout
         android:orientation="horizontal"
