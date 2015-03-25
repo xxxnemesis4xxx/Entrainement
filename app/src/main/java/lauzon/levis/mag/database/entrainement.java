@@ -46,4 +46,9 @@ public class entrainement {
     public void setDate(long date) {
         this.date = date;
     }
+
+    @Override
+    public String toString() {
+        return String.valueOf(date);
+    }
 }
