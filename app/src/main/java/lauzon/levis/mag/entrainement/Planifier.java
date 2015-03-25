@@ -60,32 +60,12 @@ public class Planifier extends Activity {
 
         List<entrainement> values = datasource.getAllEntrainements(datemin,datemax);
 
+
         ArrayAdapter<entrainement> adapter = new ArrayAdapter<entrainement>(this,
                 android.R.layout.simple_list_item_1, values);
 
         final ListView list = (ListView)findViewById(R.id.listView2);
         list.setAdapter(adapter);
-
-        /*
-        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            public void onItemClick(AdapterView<?> parent, View view,
-                                    int position, long id) {
-                /*
-                Bundle bundle = getIntent().getExtras();
-
-                //Get Date
-                Calendar calendar = Calendar.getInstance();
-                calendar.set(bundle.getInt("year"), bundle.getInt("month"), bundle.getInt("day"));
-                Date newDate = new Date(calendar.getTime().getTime());
-
-                //Get Model Id
-                Object o = list.getItemAtPosition(position);
-                model str=(model)o;//As you are using Default String Adapter
-
-                datasource.createTrainingDay(newDate, String.valueOf(((model) o).getId()));
-                */
-        //    }
-        //});
     }
 
 
@@ -136,7 +116,6 @@ public class Planifier extends Activity {
         Calendar calendar = Calendar.getInstance();
         calendar.setTimeInMillis(cal.getMinDate());
 
-        //calendar.add(Calendar.WEEK_OF_YEAR, -1);
         long datemax = calendar.getTime().getTime() + 1000;
         calendar.getTime().getTime();
 
