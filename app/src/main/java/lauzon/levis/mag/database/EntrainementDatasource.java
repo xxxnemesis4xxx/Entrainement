@@ -131,9 +131,13 @@ public class EntrainementDatasource {
     public List<entrainement> getAllEntrainements(long datedebut, long datefin) {
         List<entrainement> Entrainements = new ArrayList<entrainement>();
 
+        /*
         Cursor cursor = database.query(MySQLiteHelper.TABLE_ENTRAINEMENT,
                 null, MySQLiteHelper.COLUMN_DATE + " >= " + datedebut + " and " + MySQLiteHelper.COLUMN_DATE
                         + " <= " + datefin, null, null, null, null);
+        */
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_ENTRAINEMENT,
+                null, null, null, null, null, null);
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
