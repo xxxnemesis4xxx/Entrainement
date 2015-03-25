@@ -1,5 +1,9 @@
 package lauzon.levis.mag.database;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Locale;
+
 public class entrainement {
     private long id;
     private long date;
@@ -49,6 +53,17 @@ public class entrainement {
 
     @Override
     public String toString() {
-        return String.valueOf(date);
+        //Set Language
+        Locale locale = Locale.CANADA_FRENCH;
+
+        //Set Display Format
+        SimpleDateFormat formatter = new SimpleDateFormat("dd MMM",locale);
+
+        //Set Time
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTimeInMillis(date);
+
+        //Return training in String
+        return "Entrainement le " + formatter.format(calendar.getTime());
     }
 }
