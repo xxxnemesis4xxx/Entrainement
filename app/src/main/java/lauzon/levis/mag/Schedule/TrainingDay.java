@@ -48,13 +48,12 @@ public class TrainingDay extends Activity {
                 //Get Date
                 Calendar calendar = Calendar.getInstance();
                 calendar.set(bundle.getInt("year"), bundle.getInt("month"), bundle.getInt("day"));
-                Date newDate = new Date(calendar.getTime().getTime());
 
                 //Get Model Id
                 Object o = list.getItemAtPosition(position);
                 model str=(model)o;
 
-                datasource.createTrainingDay(newDate, String.valueOf(((model) o).getId()));
+                datasource.createTrainingDay(calendar.getTime().getTime(), String.valueOf(((model) o).getId()));
 
                 Toast toast = Toast.makeText(context,"Sauvegarde Réussi",Toast.LENGTH_SHORT);
                 toast.show();

@@ -56,7 +56,7 @@ public class Planifier extends Activity {
                 if (bButtonClicked == false) {
                     Intent intent = new Intent(getBaseContext(), TrainingDay.class);
                     intent.putExtra("year",year);
-                    intent.putExtra("month",month + 1);
+                    intent.putExtra("month",month);
                     intent.putExtra("day",dayOfMonth);
                     startActivity(intent);
                 }
@@ -67,10 +67,6 @@ public class Planifier extends Activity {
         datasource.open();
 
         List<entrainement> values = datasource.getAllEntrainements(datemin,datemax);
-        Context context = getApplicationContext();
-        Toast toast = Toast.makeText(context,values.get(1).getInfosupp(),Toast.LENGTH_SHORT);
-        toast.show();
-
         ArrayAdapter<entrainement> adapter = new ArrayAdapter<entrainement>(this,
                 android.R.layout.simple_list_item_1, values);
 

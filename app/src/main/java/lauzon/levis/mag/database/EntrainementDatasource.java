@@ -131,6 +131,7 @@ public class EntrainementDatasource {
     public List<entrainement> getAllEntrainements(long datedebut, long datefin) {
         List<entrainement> Entrainements = new ArrayList<entrainement>();
 
+
         Cursor cursor = database.query(MySQLiteHelper.TABLE_ENTRAINEMENT,
                 null, MySQLiteHelper.COLUMN_DATE + " >= " + datedebut + " and " + MySQLiteHelper.COLUMN_DATE
                         + " <= " + datefin, null, null, null, null);
@@ -164,10 +165,10 @@ public class EntrainementDatasource {
         return Exercice;
     }
 
-    public void createTrainingDay(Date date,String idModel) {
+    public void createTrainingDay(Long date,String idModel) {
         ContentValues values = new ContentValues();
         values.put(MySQLiteHelper.COLUMN_REF_MODEL,idModel);
-        values.put(MySQLiteHelper.COLUMN_DATE, date.getTime());
+        values.put(MySQLiteHelper.COLUMN_DATE, date);
         long insertId = database.insert(MySQLiteHelper.TABLE_ENTRAINEMENT, null,
                 values);
     }
