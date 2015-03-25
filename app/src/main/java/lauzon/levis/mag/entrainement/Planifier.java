@@ -1,6 +1,7 @@
 package lauzon.levis.mag.entrainement;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -10,6 +11,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.CalendarView;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import java.sql.Date;
 import java.util.Calendar;
@@ -29,6 +31,12 @@ public class Planifier extends Activity {
         setContentView(R.layout.activity_planifier);
 
         Calendar calendar = Calendar.getInstance();
+        int currentDayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
+        if (currentDayOfWeek != 1)
+        {
+            calendar.set(Calendar.DAY_OF_WEEK,1);
+        }
+
         long datemin = calendar.getTime().getTime() - 1000;
 
         calendar.add(Calendar.WEEK_OF_YEAR, 1);
@@ -59,7 +67,9 @@ public class Planifier extends Activity {
         datasource.open();
 
         List<entrainement> values = datasource.getAllEntrainements(datemin,datemax);
-
+        Context context = getApplicationContext();
+        Toast toast = Toast.makeText(context,values.get(1).getInfosupp(),Toast.LENGTH_SHORT);
+        toast.show();
 
         ArrayAdapter<entrainement> adapter = new ArrayAdapter<entrainement>(this,
                 android.R.layout.simple_list_item_1, values);
