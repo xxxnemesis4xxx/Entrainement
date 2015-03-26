@@ -196,6 +196,7 @@ public class EntrainementDatasource {
         Entrainement.setInfosupp(cursor.getString(3));
         Entrainement.setRating(cursor.getInt(2));
         Entrainement.setRefidmodel(cursor.getLong(4));
+        Entrainement.setCompleted(cursor.getInt(5));
 
         return Entrainement;
     }
