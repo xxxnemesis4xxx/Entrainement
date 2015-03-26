@@ -18,6 +18,7 @@ import java.util.Calendar;
 import java.util.List;
 
 import lauzon.levis.mag.Schedule.TrainingDay;
+import lauzon.levis.mag.Schedule.ViewTrainingDay;
 import lauzon.levis.mag.database.EntrainementDatasource;
 import lauzon.levis.mag.database.entrainement;
 import lauzon.levis.mag.database.model;
@@ -66,12 +67,24 @@ public class Planifier extends Activity {
         datasource = new EntrainementDatasource(this);
         datasource.open();
 
-        List<entrainement> values = datasource.getAllEntrainements(datemin,datemax);
+        List<entrainement> values = datasource.getAllEntrainements(datemin, datemax);
         ArrayAdapter<entrainement> adapter = new ArrayAdapter<entrainement>(this,
                 android.R.layout.simple_list_item_1, values);
 
         final ListView list = (ListView)findViewById(R.id.listView2);
         list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent intent = new Intent(getBaseContext(), ViewTrainingDay.class);
+                entrainement Entrainement = (entrainement)parent.getItemAtPosition(position);
+                intent.putExtra("ID", Entrainement.getId());
+                intent.putExtra("modelID", Entrainement.getRefidmodel());
+                intent.putExtra("Date", Entrainement.getDate());
+                startActivity(intent);
+            }
+        });
     }
 
 
