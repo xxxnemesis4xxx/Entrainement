@@ -18,8 +18,14 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_ID_MODEL = "_id";
     public static final String COLUMN_NOM_MODEL = "nom";
 
+    public static final String TABLE_ENTRAINEMENT = "entrainement";
+    public static final String COLUMN_DATE = "date";
+    public static final String COLUMN_RATING = "rating";
+    public static final String COLUMN_INFOSUPP = "retour";
+    public static final String COLUMN_COMPLETED = "completed";
+
     private static final String DATABASE_NAME = "entrainement.db";
-    private static final int DATABASE_VERSION = 5;
+    private static final int DATABASE_VERSION = 12;
 
     // Database creation sql statement
     private static final String CREATE_TABLE_MODEL = "create table "
@@ -33,14 +39,22 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + " text not null, " + COLUMN_REF_MODEL + " integer NOT NULL, " + COLUMN_GOAL + " TEXT, FOREIGN KEY ("
             + COLUMN_REF_MODEL +") REFERENCES " + TABLE_MODEL + " ("+ COLUMN_ID +"));";
 
+    private static final String CREATE_TABLE_ENTRAINEMENT = "create table "
+            + TABLE_ENTRAINEMENT + "(" + COLUMN_ID + " integer primary key autoincrement, "
+            + COLUMN_DATE + " integer NOT NULL, " + COLUMN_RATING + " integer, "
+            + COLUMN_INFOSUPP + " TEXT, " + COLUMN_REF_MODEL + " integer NOT NULL, "
+            + COLUMN_COMPLETED + " integer default 0, " + "FOREIGN KEY (" + COLUMN_REF_MODEL +") REFERENCES "
+            + TABLE_ENTRAINEMENT + " ("+ COLUMN_ID +"));";
+
     public MySQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
     @Override
     public void onCreate(SQLiteDatabase database) {
-       database.execSQL(CREATE_TABLE_MODEL);
+        database.execSQL(CREATE_TABLE_MODEL);
         database.execSQL(CREATE_TABLE_EXERCICE);
+        database.execSQL(CREATE_TABLE_ENTRAINEMENT);
     }
 
     @Override
@@ -48,6 +62,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
         Log.w(MySQLiteHelper.class.getName(),
                 "Upgrading database from version " + oldVersion + " to "
                         + newVersion + ", which will destroy all old data");
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_ENTRAINEMENT);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_EXERCICE);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_MODEL);
         onCreate(db);

@@ -10,6 +10,8 @@ import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 import java.util.List;
 
+import java.sql.Date;
+
 public class EntrainementDatasource {
     // Database fields
     private SQLiteDatabase database;
@@ -63,6 +65,15 @@ public class EntrainementDatasource {
         values.put(MySQLiteHelper.COLUMN_GOAL, goal);
 
         database.update(MySQLiteHelper.TABLE_EXERCICE,values,MySQLiteHelper.COLUMN_ID + " = " + id, null);
+    }
+
+    public void updateTraining(String info,float Rating, long id) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_INFOSUPP, info);
+        values.put(MySQLiteHelper.COLUMN_RATING, Rating);
+        values.put(MySQLiteHelper.COLUMN_COMPLETED, 1);
+
+        database.update(MySQLiteHelper.TABLE_ENTRAINEMENT,values,MySQLiteHelper.COLUMN_ID + " = " + id, null);
     }
 
     public void deleteModel(long ID) {
@@ -126,6 +137,26 @@ public class EntrainementDatasource {
         return Exercices;
     }
 
+    public List<entrainement> getAllEntrainements(long datedebut, long datefin) {
+        List<entrainement> Entrainements = new ArrayList<entrainement>();
+
+
+        Cursor cursor = database.query(MySQLiteHelper.TABLE_ENTRAINEMENT,
+                null, MySQLiteHelper.COLUMN_DATE + " >= " + datedebut + " and " + MySQLiteHelper.COLUMN_DATE
+                        + " <= " + datefin, null, null, null, null);
+
+        cursor.moveToFirst();
+        while (!cursor.isAfterLast()) {
+            entrainement Entrainement = cursorToEntrainement(cursor);
+            Entrainements.add(Entrainement);
+            cursor.moveToNext();
+        }
+
+        cursor.close();
+
+        return Entrainements;
+    }
+
     public exercice getExercice(long ID) {
         exercice Exercice = new exercice();
 
@@ -143,6 +174,14 @@ public class EntrainementDatasource {
         return Exercice;
     }
 
+    public void createTrainingDay(Long date,String idModel) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_REF_MODEL,idModel);
+        values.put(MySQLiteHelper.COLUMN_DATE, date);
+        long insertId = database.insert(MySQLiteHelper.TABLE_ENTRAINEMENT, null,
+                values);
+    }
+
     private exercice cursorToExercice(Cursor cursor) {
         exercice Exercice = new exercice();
         Exercice.setId(cursor.getLong(0));
@@ -158,4 +197,17 @@ public class EntrainementDatasource {
         Model.setNom(cursor.getString(1));
         return Model;
     }
+
+    private entrainement cursorToEntrainement(Cursor cursor) {
+        entrainement Entrainement = new entrainement();
+        Entrainement.setId(cursor.getLong(0));
+        Entrainement.setDate(cursor.getLong(1));
+        Entrainement.setInfosupp(cursor.getString(3));
+        Entrainement.setRating(cursor.getFloat(2));
+        Entrainement.setRefidmodel(cursor.getLong(4));
+        Entrainement.setCompleted(cursor.getInt(5));
+
+        return Entrainement;
+    }
+
 }
