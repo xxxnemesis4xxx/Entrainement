@@ -10,6 +10,7 @@ public class entrainement {
     private int rating;
     private String infosupp;
     private long refidmodel;
+    private int completed = 0;
 
     public long getId() {
         return id;
@@ -49,6 +50,14 @@ public class entrainement {
 
     public void setDate(long date) {
         this.date = date;
+    }
+
+    public int getCompleted() {
+        return completed;
+    }
+
+    public void setCompleted(int completed) {
+        this.completed = completed;
     }
 
     @Override
