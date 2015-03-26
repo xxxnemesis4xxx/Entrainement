@@ -7,7 +7,7 @@ import java.util.Locale;
 public class entrainement {
     private long id;
     private long date;
-    private int rating;
+    private float rating;
     private String infosupp;
     private long refidmodel;
     private int completed = 0;
@@ -36,11 +36,11 @@ public class entrainement {
         this.infosupp = infosupp;
     }
 
-    public int getRating() {
+    public float getRating() {
         return rating;
     }
 
-    public void setRating(int rating) {
+    public void setRating(float rating) {
         this.rating = rating;
     }
 

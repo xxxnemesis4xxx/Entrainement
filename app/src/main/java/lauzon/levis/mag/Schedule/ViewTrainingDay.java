@@ -1,6 +1,7 @@
 package lauzon.levis.mag.Schedule;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
@@ -15,6 +16,7 @@ import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.util.Calendar;
 import java.util.List;
@@ -29,6 +31,7 @@ public class ViewTrainingDay extends Activity {
     private EntrainementDatasource datasource;
     private int mCounterExercices = 1;
     private int previousId;
+    private long ID;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +39,7 @@ public class ViewTrainingDay extends Activity {
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 
         Bundle bundle = getIntent().getExtras();
-        long id = bundle.getLong("modelID");
+        ID = bundle.getLong("modelID");
 
         //Set Underline Text
         String udata="Vos Exercices";
@@ -50,7 +53,7 @@ public class ViewTrainingDay extends Activity {
         datasource.open();
 
         //Get out List of Models
-        List<exercice> values = datasource.getALLExerciceForOneModel(id);
+        List<exercice> values = datasource.getALLExerciceForOneModel(ID);
 
         for (int i = 0; i < values.size(); i++) {
             LoadExerciceLayout(values.get(i));
@@ -171,7 +174,7 @@ public class ViewTrainingDay extends Activity {
         mCounterExercices++;
 
         //EditText
-        EditText etInfoSupp = new EditText(this);
+        final EditText etInfoSupp = new EditText(this);
         etInfoSupp.setId(mCounterExercices);
         etInfoSupp.setLayoutParams(params4);
         etInfoSupp.setHeight(450);
@@ -180,7 +183,7 @@ public class ViewTrainingDay extends Activity {
         mCounterExercices++;
 
         //Button for Saving
-        Button button = new Button(this);
+        final Button button = new Button(this);
         button.setText("Compléter l'entrainement");
         button.setLayoutParams(params5);
         button.setHeight(20);
@@ -189,7 +192,16 @@ public class ViewTrainingDay extends Activity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Context context = getApplicationContext();
 
+                //Get Info Suppl
+                String textSuppl = etInfoSupp.getText().toString();
+                float intRating = rbRate.getRating();
+
+                datasource.updateTraining(textSuppl,intRating,ID);
+
+                Toast toast = Toast.makeText(context,"Sauvegarde Réussi",Toast.LENGTH_SHORT);
+                toast.show();
             }
         });
         mCounterExercices++;

@@ -67,6 +67,15 @@ public class EntrainementDatasource {
         database.update(MySQLiteHelper.TABLE_EXERCICE,values,MySQLiteHelper.COLUMN_ID + " = " + id, null);
     }
 
+    public void updateTraining(String info,float Rating, long id) {
+        ContentValues values = new ContentValues();
+        values.put(MySQLiteHelper.COLUMN_INFOSUPP, info);
+        values.put(MySQLiteHelper.COLUMN_RATING, Rating);
+        values.put(MySQLiteHelper.COLUMN_COMPLETED, 1);
+
+        database.update(MySQLiteHelper.TABLE_ENTRAINEMENT,values,MySQLiteHelper.COLUMN_ID + " = " + id, null);
+    }
+
     public void deleteModel(long ID) {
         database.delete(MySQLiteHelper.TABLE_MODEL, MySQLiteHelper.COLUMN_ID
                 + " = " + ID, null);
@@ -194,7 +203,7 @@ public class EntrainementDatasource {
         Entrainement.setId(cursor.getLong(0));
         Entrainement.setDate(cursor.getLong(1));
         Entrainement.setInfosupp(cursor.getString(3));
-        Entrainement.setRating(cursor.getInt(2));
+        Entrainement.setRating(cursor.getFloat(2));
         Entrainement.setRefidmodel(cursor.getLong(4));
         Entrainement.setCompleted(cursor.getInt(5));
 
