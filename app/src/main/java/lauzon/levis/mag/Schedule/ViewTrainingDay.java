@@ -119,8 +119,8 @@ public class ViewTrainingDay extends Activity {
 
     private void LoadCompletingTraining() {
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
-        RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
-        RelativeLayout.LayoutParams params3 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
+        RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
+        RelativeLayout.LayoutParams params3 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
         RelativeLayout.LayoutParams params4 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
         params2.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
         params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
@@ -135,14 +135,18 @@ public class ViewTrainingDay extends Activity {
         tv.setTextSize(30);
         tv.setId(mCounterExercices);
         tv.setHeight(90);
-        tv.setWidth(400);
         params.addRule(RelativeLayout.BELOW, tv.getId() - 1);
+        params.setMargins(0,20,0,0);
         mCounterExercices++;
 
+        //Rating Bar
         final RatingBar rbRate = new RatingBar(this);
         rbRate.setId(mCounterExercices);
         rbRate.setLayoutParams(params2);
+        rbRate.setNumStars(5);
         params2.addRule(RelativeLayout.BELOW,tv.getId());
+        mCounterExercices++;
+
 
         layout.addView(tv);
         layout.addView(rbRate);
