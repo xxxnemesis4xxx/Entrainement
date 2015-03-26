@@ -22,9 +22,10 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_DATE = "date";
     public static final String COLUMN_RATING = "rating";
     public static final String COLUMN_INFOSUPP = "retour";
+    public static final String COLUMN_COMPLETED = "completed";
 
     private static final String DATABASE_NAME = "entrainement.db";
-    private static final int DATABASE_VERSION = 10;
+    private static final int DATABASE_VERSION = 11;
 
     // Database creation sql statement
     private static final String CREATE_TABLE_MODEL = "create table "
@@ -42,7 +43,7 @@ public class MySQLiteHelper extends SQLiteOpenHelper {
             + TABLE_ENTRAINEMENT + "(" + COLUMN_ID + " integer primary key autoincrement, "
             + COLUMN_DATE + " integer NOT NULL, " + COLUMN_RATING + " integer, "
             + COLUMN_INFOSUPP + " TEXT, " + COLUMN_REF_MODEL + " integer NOT NULL, "
-            + "FOREIGN KEY (" + COLUMN_REF_MODEL +") REFERENCES "
+            + COLUMN_COMPLETED + " integer default 0, " + "FOREIGN KEY (" + COLUMN_REF_MODEL +") REFERENCES "
             + TABLE_ENTRAINEMENT + " ("+ COLUMN_ID +"));";
 
     public MySQLiteHelper(Context context) {
