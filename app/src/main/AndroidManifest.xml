@@ -56,6 +56,10 @@
             android:name="lauzon.levis.mag.Schedule.TrainingDay"
             android:label="@string/title_activity_training_day" >
         </activity>
+        <activity
+            android:name="lauzon.levis.mag.Schedule.ViewTrainingDay"
+            android:label="@string/title_activity_view_training_day" >
+        </activity>
     </application>
 
 </manifest>
