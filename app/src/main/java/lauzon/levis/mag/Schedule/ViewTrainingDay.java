@@ -32,6 +32,9 @@ public class ViewTrainingDay extends Activity {
     private int mCounterExercices = 1;
     private int previousId;
     private long ID;
+    private int Completed;
+    private String infoSuppl;
+    private float Rating;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,6 +43,9 @@ public class ViewTrainingDay extends Activity {
 
         Bundle bundle = getIntent().getExtras();
         ID = bundle.getLong("modelID");
+        Completed = bundle.getInt("statut");
+        infoSuppl = bundle.getString("infoSuppl");
+        Rating = bundle.getFloat("rating");
 
         //Set Underline Text
         String udata="Vos Exercices";
@@ -182,6 +188,7 @@ public class ViewTrainingDay extends Activity {
         params4.addRule(RelativeLayout.BELOW, tv2.getId());
         mCounterExercices++;
 
+
         //Button for Saving
         final Button button = new Button(this);
         button.setText("Compléter l'entrainement");
@@ -206,11 +213,21 @@ public class ViewTrainingDay extends Activity {
         });
         mCounterExercices++;
 
+        if (Completed == 1) {
+            etInfoSupp.setText(infoSuppl);
+            etInfoSupp.setEnabled(false);
+
+            rbRate.setRating(Rating);
+            rbRate.setEnabled(false);
+        }
+
         layout.addView(tv);
         layout.addView(rbRate);
         layout.addView(tv2);
         layout.addView(etInfoSupp);
-        layout.addView(button);
+        if (Completed != 1) {
+            layout.addView(button);
+        }
     }
 
     public void closeCurrentIntent(View view) {

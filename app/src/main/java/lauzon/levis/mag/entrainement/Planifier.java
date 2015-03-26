@@ -82,6 +82,9 @@ public class Planifier extends Activity {
                 intent.putExtra("ID", Entrainement.getId());
                 intent.putExtra("modelID", Entrainement.getRefidmodel());
                 intent.putExtra("Date", Entrainement.getDate());
+                intent.putExtra("statut",Entrainement.getCompleted());
+                intent.putExtra("infoSuppl",Entrainement.getInfosupp());
+                intent.putExtra("rating",Entrainement.getRating());
                 startActivity(intent);
             }
         });
