@@ -85,7 +85,7 @@ public class ViewTrainingDay extends Activity {
         final TextView tv = new TextView(this);
         tv.setText("Exercice " + String.valueOf(mCounterExercices) + " : " + String.valueOf(value.getNom()));
         tv.setLayoutParams(params);
-        tv.setTextSize(30);
+        tv.setTextSize(25);
         tv.setId(mCounterExercices);
         tv.setHeight(90);
         tv.setWidth(400);
@@ -121,7 +121,7 @@ public class ViewTrainingDay extends Activity {
         RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
         RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
         RelativeLayout.LayoutParams params3 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
-        RelativeLayout.LayoutParams params4 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
+        RelativeLayout.LayoutParams params4 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
         params2.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
         params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
         params3.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
@@ -132,7 +132,7 @@ public class ViewTrainingDay extends Activity {
         final TextView tv = new TextView(this);
         tv.setText("Notez votre effort :");
         tv.setLayoutParams(params);
-        tv.setTextSize(30);
+        tv.setTextSize(25);
         tv.setId(mCounterExercices);
         tv.setHeight(90);
         params.addRule(RelativeLayout.BELOW, tv.getId() - 1);
@@ -147,9 +147,23 @@ public class ViewTrainingDay extends Activity {
         params2.addRule(RelativeLayout.BELOW,tv.getId());
         mCounterExercices++;
 
+        //Text
+        final TextView tv2 = new TextView(this);
+        tv2.setText("Information Supplémentaire");
+        tv2.setLayoutParams(params3);
+        tv2.setTextSize(25);
+        tv2.setId(mCounterExercices);
+        tv2.setHeight(90);
+        params3.addRule(RelativeLayout.BELOW, rbRate.getId());
+        params3.setMargins(0,40,0,0);
+        mCounterExercices++;
+
+        //EditText
+
 
         layout.addView(tv);
         layout.addView(rbRate);
+        layout.addView(tv2);
     }
 
     public void closeCurrentIntent(View view) {
