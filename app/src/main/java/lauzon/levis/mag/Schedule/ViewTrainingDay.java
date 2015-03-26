@@ -6,6 +6,7 @@ import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.style.UnderlineSpan;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -132,6 +133,7 @@ public class ViewTrainingDay extends Activity {
         RelativeLayout.LayoutParams params2 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
         RelativeLayout.LayoutParams params3 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
         RelativeLayout.LayoutParams params4 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
+        RelativeLayout.LayoutParams params5 = new RelativeLayout.LayoutParams( RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.WRAP_CONTENT );
         params2.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
         params.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
         params3.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
@@ -172,13 +174,31 @@ public class ViewTrainingDay extends Activity {
         EditText etInfoSupp = new EditText(this);
         etInfoSupp.setId(mCounterExercices);
         etInfoSupp.setLayoutParams(params4);
-        params4.addRule(RelativeLayout.BELOW,tv2.getId());
+        etInfoSupp.setHeight(450);
+        etInfoSupp.setGravity(Gravity.TOP);
+        params4.addRule(RelativeLayout.BELOW, tv2.getId());
+        mCounterExercices++;
+
+        //Button for Saving
+        Button button = new Button(this);
+        button.setText("Compléter l'entrainement");
+        button.setLayoutParams(params5);
+        button.setHeight(20);
+        button.setId(mCounterExercices);
+        params5.addRule(RelativeLayout.BELOW, etInfoSupp.getId());
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
         mCounterExercices++;
 
         layout.addView(tv);
         layout.addView(rbRate);
         layout.addView(tv2);
         layout.addView(etInfoSupp);
+        layout.addView(button);
     }
 
     public void closeCurrentIntent(View view) {
