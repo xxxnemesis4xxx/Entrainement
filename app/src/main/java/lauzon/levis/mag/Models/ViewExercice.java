@@ -97,6 +97,7 @@ public class ViewExercice extends Activity {
             public void onClick(View v) {
                 Intent intent = new Intent(getBaseContext(), Goals.class);
                 intent.putExtra("ID",value.getId());
+                intent.putExtra("mod",true);
                 startActivity(intent);
             }
         });
