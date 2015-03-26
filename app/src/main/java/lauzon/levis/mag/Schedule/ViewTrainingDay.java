@@ -8,6 +8,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.RatingBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -159,11 +160,16 @@ public class ViewTrainingDay extends Activity {
         mCounterExercices++;
 
         //EditText
-
+        EditText etInfoSupp = new EditText(this);
+        etInfoSupp.setId(mCounterExercices);
+        etInfoSupp.setLayoutParams(params4);
+        params4.addRule(RelativeLayout.BELOW,tv2.getId());
+        mCounterExercices++;
 
         layout.addView(tv);
         layout.addView(rbRate);
         layout.addView(tv2);
+        layout.addView(etInfoSupp);
     }
 
     public void closeCurrentIntent(View view) {
