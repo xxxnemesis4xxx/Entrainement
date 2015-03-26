@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.List;
@@ -26,6 +27,15 @@ public class Goals extends Activity {
 
         Bundle bundle = getIntent().getExtras();
         long id = bundle.getLong("ID");
+        boolean buttonSauv = bundle.getBoolean("mod");
+
+        if (!buttonSauv) {
+            Button button = (Button)findViewById(R.id.saveGoal);
+            button.setVisibility(View.INVISIBLE);
+
+            EditText etTextGoal = (EditText)findViewById(R.id.etGoal);
+            etTextGoal.setEnabled(false);
+        }
 
         //Get our Database
         datasource = new EntrainementDatasource(this);
