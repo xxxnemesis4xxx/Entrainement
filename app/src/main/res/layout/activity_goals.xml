@@ -35,7 +35,8 @@
             android:id="@+id/saveGoal"
             android:layout_weight="1"
             android:onClick="saveGoalInDB"
-            android:background="#d59900" />
+            android:background="#d59900"
+            android:layout_marginRight="5dp" />
 
         <Button
             android:layout_width="match_parent"
@@ -45,6 +46,7 @@
             android:layout_weight="1"
             android:nestedScrollingEnabled="false"
             android:onClick="closeCurrentIntent"
-            android:background="#d59900" />
+            android:background="#d59900"
+            android:layout_marginLeft="5dp" />
     </LinearLayout>
 </RelativeLayout>
