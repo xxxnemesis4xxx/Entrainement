@@ -2,6 +2,7 @@ package lauzon.levis.mag.Schedule;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
@@ -19,6 +20,7 @@ import java.sql.Date;
 
 import lauzon.levis.mag.database.EntrainementDatasource;
 import lauzon.levis.mag.database.model;
+import lauzon.levis.mag.entrainement.Planifier;
 import lauzon.levis.mag.entrainement.R;
 
 public class TrainingDay extends Activity {
@@ -60,6 +62,9 @@ public class TrainingDay extends Activity {
 
                 Toast toast = Toast.makeText(context,"Sauvegarde Réussi",Toast.LENGTH_SHORT);
                 toast.show();
+
+                Intent intent = new Intent(getBaseContext(), Planifier.class);
+                startActivity(intent);
             }
         });
     }

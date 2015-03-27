@@ -143,7 +143,7 @@ public class EntrainementDatasource {
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_ENTRAINEMENT,
                 null, MySQLiteHelper.COLUMN_DATE + " >= " + datedebut + " and " + MySQLiteHelper.COLUMN_DATE
-                        + " <= " + datefin, null, null, null, null);
+                        + " <= " + datefin, null, null, null, MySQLiteHelper.COLUMN_DATE + " ASC");
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
