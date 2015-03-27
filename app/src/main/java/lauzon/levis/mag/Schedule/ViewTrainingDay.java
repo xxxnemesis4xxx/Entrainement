@@ -38,6 +38,7 @@ public class ViewTrainingDay extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().hide();
         setContentView(R.layout.activity_view_training_day);
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 
@@ -109,6 +110,7 @@ public class ViewTrainingDay extends Activity {
         tv.setId(mCounterExercices);
         tv.setHeight(90);
         tv.setWidth(400);
+        params.setMargins(0,20,0,0);
 
         if (mCounterExercices > 1) {
             params.addRule(RelativeLayout.BELOW, tv.getId() - 1);
@@ -123,6 +125,8 @@ public class ViewTrainingDay extends Activity {
         button.setLayoutParams(params2);
         button.setHeight(20);
         button.setWidth(150);
+        button.setBackgroundColor(0xffd59900);
+        params2.setMargins(10,0,0,25);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -195,6 +199,7 @@ public class ViewTrainingDay extends Activity {
         button.setLayoutParams(params5);
         button.setHeight(20);
         button.setId(mCounterExercices);
+        button.setBackgroundColor(0xffd59900);
         params5.addRule(RelativeLayout.BELOW, etInfoSupp.getId());
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -209,6 +214,7 @@ public class ViewTrainingDay extends Activity {
 
                 Toast toast = Toast.makeText(context,"Sauvegarde Réussi",Toast.LENGTH_SHORT);
                 toast.show();
+                finish();
             }
         });
         mCounterExercices++;

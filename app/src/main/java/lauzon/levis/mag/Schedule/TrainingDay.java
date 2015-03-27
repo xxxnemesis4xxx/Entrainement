@@ -2,6 +2,8 @@ package lauzon.levis.mag.Schedule;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,6 +20,7 @@ import java.sql.Date;
 
 import lauzon.levis.mag.database.EntrainementDatasource;
 import lauzon.levis.mag.database.model;
+import lauzon.levis.mag.entrainement.Planifier;
 import lauzon.levis.mag.entrainement.R;
 
 public class TrainingDay extends Activity {
@@ -26,7 +29,9 @@ public class TrainingDay extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().hide();
         setContentView(R.layout.activity_training_day);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 
         datasource = new EntrainementDatasource(this);
         datasource.open();
@@ -57,6 +62,9 @@ public class TrainingDay extends Activity {
 
                 Toast toast = Toast.makeText(context,"Sauvegarde Réussi",Toast.LENGTH_SHORT);
                 toast.show();
+
+                Intent intent = new Intent(getBaseContext(), Planifier.class);
+                startActivity(intent);
             }
         });
     }

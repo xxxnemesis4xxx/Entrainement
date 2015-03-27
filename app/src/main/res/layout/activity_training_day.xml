@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="lauzon.levis.mag.Schedule.TrainingDay">
+    tools:context="lauzon.levis.mag.Schedule.TrainingDay"
+    android:background="#ffffb700">
 
     <LinearLayout
         android:orientation="horizontal"
@@ -22,7 +23,8 @@
             android:text="Annuler"
             android:id="@+id/button12"
             android:layout_weight="1"
-            android:onClick="changeDisplayToActivity" />
+            android:onClick="changeDisplayToActivity"
+            android:background="#d59900" />
 
     </LinearLayout>
 

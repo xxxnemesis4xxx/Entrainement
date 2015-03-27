@@ -3,6 +3,7 @@ package lauzon.levis.mag.entrainement;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -29,7 +30,9 @@ public class Planifier extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().hide();
         setContentView(R.layout.activity_planifier);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 
         Calendar calendar = Calendar.getInstance();
         int currentDayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
@@ -127,6 +130,31 @@ public class Planifier extends Activity {
             cal.setMinDate(datemin);
             cal.setMaxDate(datemax);
 
+        datasource = new EntrainementDatasource(this);
+        datasource.open();
+
+        List<entrainement> values = datasource.getAllEntrainements(datemin, datemax);
+        ArrayAdapter<entrainement> adapter = new ArrayAdapter<entrainement>(this,
+                android.R.layout.simple_list_item_1, values);
+
+        final ListView list = (ListView)findViewById(R.id.listView2);
+        list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent intent = new Intent(getBaseContext(), ViewTrainingDay.class);
+                entrainement Entrainement = (entrainement)parent.getItemAtPosition(position);
+                intent.putExtra("ID", Entrainement.getId());
+                intent.putExtra("modelID", Entrainement.getRefidmodel());
+                intent.putExtra("Date", Entrainement.getDate());
+                intent.putExtra("statut",Entrainement.getCompleted());
+                intent.putExtra("infoSuppl",Entrainement.getInfosupp());
+                intent.putExtra("rating",Entrainement.getRating());
+                startActivity(intent);
+            }
+        });
+
             bButtonClicked = false;
     }
 
@@ -146,6 +174,32 @@ public class Planifier extends Activity {
 
         cal.setMinDate(datemin);
         cal.setMaxDate(datemax);
+
+        datasource = new EntrainementDatasource(this);
+        datasource.open();
+
+        List<entrainement> values = datasource.getAllEntrainements(datemin, datemax);
+        ArrayAdapter<entrainement> adapter = new ArrayAdapter<entrainement>(this,
+                android.R.layout.simple_list_item_1, values);
+
+        final ListView list = (ListView)findViewById(R.id.listView2);
+        list.setAdapter(adapter);
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent intent = new Intent(getBaseContext(), ViewTrainingDay.class);
+                entrainement Entrainement = (entrainement)parent.getItemAtPosition(position);
+                intent.putExtra("ID", Entrainement.getId());
+                intent.putExtra("modelID", Entrainement.getRefidmodel());
+                intent.putExtra("Date", Entrainement.getDate());
+                intent.putExtra("statut",Entrainement.getCompleted());
+                intent.putExtra("infoSuppl",Entrainement.getInfosupp());
+                intent.putExtra("rating",Entrainement.getRating());
+                startActivity(intent);
+            }
+        });
+
         bButtonClicked = false;
     }
 

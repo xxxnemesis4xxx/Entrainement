@@ -27,7 +27,9 @@ public class CreateModel extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getActionBar().hide();
         setContentView(R.layout.activity_modele);
+
         setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
@@ -38,19 +40,14 @@ public class CreateModel extends Activity {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_modele, menu);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 
-        //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
         }
@@ -103,15 +100,34 @@ public class CreateModel extends Activity {
         EditText et = (EditText)findViewById(R.id.txtnommodele);
         long idModel = datasource.createModel(et.getText().toString());
 
-        int idText = 2;
-        for(int i = 1; i < mExerciceCounter; i++) {
+        if (et.getText().toString() == null || et.getText().toString().isEmpty() || mExerciceCounter == 1) {
+            Toast toast = Toast.makeText(context,"Informations manquantes",Toast.LENGTH_SHORT);
+            toast.show();
+        } else {
+            int idText = 2;
 
-            et = (EditText)findViewById(idText);
-            datasource.createExercice(et.getText().toString(),idModel);
-            idText += 2;
+            boolean erreur = false;
+            for (int i = 1; i < mExerciceCounter; i++) {
+                et = (EditText) findViewById(idText);
+                if (et.getText().toString() == null || et.getText().toString().isEmpty()) {
+                    erreur = true;
+                }
+            }
+
+            if (!erreur) {
+                for (int i = 1; i < mExerciceCounter; i++) {
+                    et = (EditText) findViewById(idText);
+                    datasource.createExercice(et.getText().toString(), idModel);
+                    idText += 2;
+                }
+
+                Toast toast = Toast.makeText(context, "Sauvegarde Réussi", Toast.LENGTH_SHORT);
+                toast.show();
+                finish();
+            } else {
+                Toast toast = Toast.makeText(context,"Nom d'exercice invalide",Toast.LENGTH_SHORT);
+                toast.show();
+            }
         }
-
-        Toast toast = Toast.makeText(context,"Sauvegarde Réussi",Toast.LENGTH_SHORT);
-        toast.show();
     }
 }

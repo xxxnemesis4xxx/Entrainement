@@ -79,8 +79,6 @@ public class EntrainementDatasource {
     public void deleteModel(long ID) {
         database.delete(MySQLiteHelper.TABLE_MODEL, MySQLiteHelper.COLUMN_ID
                 + " = " + ID, null);
-        database.delete(MySQLiteHelper.TABLE_EXERCICE, MySQLiteHelper.COLUMN_REF_MODEL
-                + " = " + ID, null);
     }
 
     public List<exercice> getAllExercices() {
@@ -143,7 +141,7 @@ public class EntrainementDatasource {
 
         Cursor cursor = database.query(MySQLiteHelper.TABLE_ENTRAINEMENT,
                 null, MySQLiteHelper.COLUMN_DATE + " >= " + datedebut + " and " + MySQLiteHelper.COLUMN_DATE
-                        + " <= " + datefin, null, null, null, null);
+                        + " <= " + datefin, null, null, null, MySQLiteHelper.COLUMN_DATE + " ASC");
 
         cursor.moveToFirst();
         while (!cursor.isAfterLast()) {
