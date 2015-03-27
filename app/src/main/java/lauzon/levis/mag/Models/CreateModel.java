@@ -100,15 +100,34 @@ public class CreateModel extends Activity {
         EditText et = (EditText)findViewById(R.id.txtnommodele);
         long idModel = datasource.createModel(et.getText().toString());
 
-        int idText = 2;
-        for(int i = 1; i < mExerciceCounter; i++) {
+        if (et.getText().toString() == null || et.getText().toString().isEmpty() || mExerciceCounter == 1) {
+            Toast toast = Toast.makeText(context,"Informations manquantes",Toast.LENGTH_SHORT);
+            toast.show();
+        } else {
+            int idText = 2;
 
-            et = (EditText)findViewById(idText);
-            datasource.createExercice(et.getText().toString(),idModel);
-            idText += 2;
+            boolean erreur = false;
+            for (int i = 1; i < mExerciceCounter; i++) {
+                et = (EditText) findViewById(idText);
+                if (et.getText().toString() == null || et.getText().toString().isEmpty()) {
+                    erreur = true;
+                }
+            }
+
+            if (!erreur) {
+                for (int i = 1; i < mExerciceCounter; i++) {
+                    et = (EditText) findViewById(idText);
+                    datasource.createExercice(et.getText().toString(), idModel);
+                    idText += 2;
+                }
+
+                Toast toast = Toast.makeText(context, "Sauvegarde Réussi", Toast.LENGTH_SHORT);
+                toast.show();
+                finish();
+            } else {
+                Toast toast = Toast.makeText(context,"Nom d'exercice invalide",Toast.LENGTH_SHORT);
+                toast.show();
+            }
         }
-
-        Toast toast = Toast.makeText(context,"Sauvegarde Réussi",Toast.LENGTH_SHORT);
-        toast.show();
     }
 }
