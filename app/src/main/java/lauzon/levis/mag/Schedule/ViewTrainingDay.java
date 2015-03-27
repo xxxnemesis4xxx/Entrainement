@@ -214,6 +214,7 @@ public class ViewTrainingDay extends Activity {
 
                 Toast toast = Toast.makeText(context,"Sauvegarde Réussi",Toast.LENGTH_SHORT);
                 toast.show();
+                finish();
             }
         });
         mCounterExercices++;

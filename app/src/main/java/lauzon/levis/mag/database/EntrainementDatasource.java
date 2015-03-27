@@ -79,8 +79,6 @@ public class EntrainementDatasource {
     public void deleteModel(long ID) {
         database.delete(MySQLiteHelper.TABLE_MODEL, MySQLiteHelper.COLUMN_ID
                 + " = " + ID, null);
-        database.delete(MySQLiteHelper.TABLE_EXERCICE, MySQLiteHelper.COLUMN_REF_MODEL
-                + " = " + ID, null);
     }
 
     public List<exercice> getAllExercices() {
