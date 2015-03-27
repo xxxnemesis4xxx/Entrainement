@@ -3,6 +3,7 @@ package lauzon.levis.mag.entrainement;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -31,6 +32,7 @@ public class Planifier extends Activity {
         super.onCreate(savedInstanceState);
         getActionBar().hide();
         setContentView(R.layout.activity_planifier);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_NOSENSOR);
 
         Calendar calendar = Calendar.getInstance();
         int currentDayOfWeek = Calendar.getInstance().get(Calendar.DAY_OF_WEEK);
