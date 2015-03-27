@@ -111,4 +111,8 @@ public class Delete extends Activity {
         layout.addView(tv);
         layout.addView(button);
     }
+
+    public void changeDisplayToActivity(View view) {
+        finish();
+    }
 }
