@@ -76,6 +76,8 @@ public class ViewModels extends Activity {
         button.setText("Voir les exercices");
         button.setLayoutParams(params2);
         button.setHeight(20);
+        button.setBackgroundColor(0xffd59900);
+        params2.setMargins(10,0,0,0);
 
         params2.addRule(RelativeLayout.RIGHT_OF, tv.getId());
         params2.addRule(RelativeLayout.BELOW, previousId);

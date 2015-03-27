@@ -78,6 +78,7 @@ public class ViewExercice extends Activity {
         tv.setId(mCounterExercices);
         tv.setHeight(90);
         tv.setWidth(400);
+        params.setMargins(0,20,0,0);
 
         if (mCounterExercices > 1) {
             params.addRule(RelativeLayout.BELOW, tv.getId() - 1);
@@ -92,6 +93,8 @@ public class ViewExercice extends Activity {
         button.setLayoutParams(params2);
         button.setHeight(20);
         button.setWidth(150);
+        button.setBackgroundColor(0xffd59900);
+        params2.setMargins(10,0,0,25);
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

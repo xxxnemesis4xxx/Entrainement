@@ -126,18 +126,6 @@
                 <Button
                     android:layout_width="fill_parent"
                     android:layout_height="fill_parent"
-                    android:text="Annuler"
-                    android:id="@+id/btnannuler"
-                    android:layout_below="@+id/btnenregistrer"
-                    android:layout_alignParentStart="true"
-                    android:layout_weight="1"
-                    android:nestedScrollingEnabled="false"
-                    android:onClick="changeDisplayToActivity"
-                    android:background="#d59900" />
-
-                <Button
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent"
                     android:text="Enregistrer"
                     android:id="@+id/btnenregistrer"
                     android:layout_centerVertical="true"
@@ -145,7 +133,22 @@
                     android:layout_weight="1"
                     android:nestedScrollingEnabled="false"
                     android:onClick="saveModeleInDB"
-                    android:background="#d59900" />
+                    android:background="#d59900"
+                    android:layout_marginRight="5dp" />
+
+                <Button
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:text="Annuler"
+                    android:id="@+id/btnannuler"
+                    android:layout_below="@+id/btnenregistrer"
+                    android:layout_alignParentStart="true"
+                    android:layout_weight="1"
+                    android:nestedScrollingEnabled="false"
+                    android:onClick="changeDisplayToActivity"
+                    android:background="#ffd59900"
+                    android:layout_marginLeft="5dp" />
+
             </LinearLayout>
         </ScrollView>
 
