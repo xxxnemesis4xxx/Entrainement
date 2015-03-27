@@ -52,4 +52,8 @@ public class ModelPanel extends Activity {
         Intent intent = new Intent(this, Delete.class);
         startActivity(intent);
     }
+
+    public void changeDisplayToActivity(View view) {
+        finish();
+    }
 }
