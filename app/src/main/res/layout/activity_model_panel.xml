@@ -4,7 +4,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:paddingBottom="@dimen/activity_vertical_margin"
-    tools:context="lauzon.levis.mag.Models.ModelPanel">
+    tools:context="lauzon.levis.mag.Models.ModelPanel"
+    android:background="#ffffb700">
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -20,16 +21,20 @@
             android:text="Créer un nouveau Model"
             android:id="@+id/button5"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="0.33"
-            android:onClick="changeDisplayToCreateModel" />
+            android:layout_weight="0.30"
+            android:onClick="changeDisplayToCreateModel"
+            android:background="#d59900"
+            android:layout_marginTop="5dp" />
 
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Voir vos Models"
             android:id="@+id/button6"
-            android:layout_weight="0.33"
-            android:onClick="changeDisplayToViewModels" />
+            android:layout_weight="0.30"
+            android:onClick="changeDisplayToViewModels"
+            android:background="#d59900"
+            android:layout_marginTop="5dp" />
 
         <Button
             android:layout_width="match_parent"
@@ -37,7 +42,9 @@
             android:text="Supprimer Model(s)"
             android:id="@+id/button7"
             android:layout_gravity="center_horizontal"
-            android:layout_weight="0.33"
-            android:onClick="changeDisplayToDeleteModel" />
+            android:layout_weight="0.30"
+            android:onClick="changeDisplayToDeleteModel"
+            android:background="#d59900"
+            android:layout_marginTop="5dp" />
     </LinearLayout>
 </RelativeLayout>
